@@ -1,17 +1,26 @@
 import React, { useState } from 'react';
 import { invokeLambdaFunction } from './lambdaInvoker';
-import LastYearMovies from './components/LastYearMovies';
-import { getMostReviewsUser } from './components/MostReviews'; // Import getMostReviewsUser function
-import { getMostRewatchesUser } from './components/MostRewatches'; // Import getMostRewatchesUser function
-import { getLastYearMovies } from './components/getLastYearMovies'; // Import getLastYearMovies function
+import TitlePage from './pages/TitlePage';
+import MoviesWatchedPage from './pages/MoviesWatchedPage';
+import LastYearMoviesPage from './pages/LastYearMoviesPage';
+import MostRewatchesPage from './pages/MostRewatchesPage';
+import MostReviewsPage from './pages/MostReviewsPage';
+import EndPage from './pages/EndPage';
+import { getLastYearMovies } from './components/getLastYearMovies';
 import './styles/styles.css';
+import './App.css';
 
 const App = () => {
   const [usernamesInput, setUsernamesInput] = useState('');
   const [recentlyWatchedMovies, setRecentlyWatchedMovies] = useState({});
+  const [pageIndex, setPageIndex] = useState(-1); // Initial page index, -1 for title page
+  const [loading, setLoading] = useState(false); // Loading state
+  const [fetchedData, setFetchedData] = useState(false); // Checks if username data has been fetched from lambda
 
   const handleFetchData = async () => {
     try {
+      setLoading(true); // Set loading to true when fetch starts
+      setFetchedData(false); // Reset fetchedData to false when fetch starts
       const usernamesArray = usernamesInput.split(',').map(username => username.trim());
       let allTopMovies = {};
 
@@ -36,16 +45,22 @@ const App = () => {
 
       setRecentlyWatchedMovies(allTopMovies);
       console.log('All top movies:', allTopMovies);
+      setFetchedData(true); // Set fetchedData to true when fetch completes successfully
     } catch (error) {
       console.error('Error fetching data:', error);
+    } finally {
+      setLoading(false); // Set loading to false when fetch completes
     }
   };
 
-  const handleInputChange = (event) => {
-    setUsernamesInput(event.target.value);
+  const resetApp = () => {
+    setUsernamesInput('');
+    setRecentlyWatchedMovies({});
+    setPageIndex(-1);
+    setLoading(false);
+    setFetchedData(false);
   };
 
-  // Function to get the total number of movies watched for each user
   const getMoviesCountByUser = (userData) => {
     const moviesCount = {};
     for (const username in userData) {
@@ -54,45 +69,55 @@ const App = () => {
     return moviesCount;
   };
 
-  // Call the function to get movies count by user
-  const moviesCountByUser = getMoviesCountByUser(recentlyWatchedMovies);
-
-  return (
-    <div className="container">
-      <div className="input-container">
-        <input
-          type="text"
-          value={usernamesInput}
-          onChange={handleInputChange}
-          placeholder="Enter usernames separated by commas"
-        />
-        <button onClick={handleFetchData}>Fetch Data</button>
-      </div>
-      <div>
-        {Object.keys(recentlyWatchedMovies).map(username => (
-          <React.Fragment key={username}>
-            <LastYearMovies username={username} diaryData={recentlyWatchedMovies[username]} />
-          </React.Fragment>
-        ))}
-      </div>
-      <div>
-        <h2>User with the Most Reviews:</h2>
-        <p>{getMostReviewsUser(recentlyWatchedMovies)}</p>
-      </div>
-      <div>
-        <h2>User with the Most Rewatches:</h2>
-        <p>{getMostRewatchesUser(recentlyWatchedMovies)}</p>
-      </div>
-      <div>
-        <h2>Movies Watched Count:</h2>
-        <ul>
-          {Object.keys(moviesCountByUser).map(username => (
-            <li key={username}>{username}: {moviesCountByUser[username]}</li>
-          ))}
-        </ul>
-      </div>
-    </div>
-  );
+  if (pageIndex === -1) {
+    return (
+      <TitlePage
+        onClick={() => setPageIndex(0)}
+        usernamesInput={usernamesInput}
+        setUsernamesInput={setUsernamesInput}
+        handleFetchData={handleFetchData}
+        fetchedData={fetchedData}
+        loading={loading}
+      />
+    );
+  } else if (pageIndex === 0) {
+    return (
+      <MoviesWatchedPage
+        onClick={() => setPageIndex(1)}
+        moviesCountByUser={getMoviesCountByUser(recentlyWatchedMovies)}
+      />
+    );
+  } else if (pageIndex === 1) {
+    return (
+      <LastYearMoviesPage
+        onClick={() => setPageIndex(2)}
+        recentlyWatchedMovies={recentlyWatchedMovies}
+      />
+    );
+  } else if (pageIndex === 2) {
+    return (
+      <MostRewatchesPage
+        onClick={() => setPageIndex(3)}
+        recentlyWatchedMovies={recentlyWatchedMovies}
+      />
+    );
+  } else if (pageIndex === 3) {
+    return (
+      <MostReviewsPage
+        onClick={() => setPageIndex(4)}
+        recentlyWatchedMovies={recentlyWatchedMovies}
+      />
+    );
+  } else if (pageIndex === 4) {
+    return (
+      <EndPage
+        onClick={resetApp}
+        recentlyWatchedMovies={recentlyWatchedMovies}
+      />
+    );
+  } else {
+    return <div>Page Not Found</div>; // Handle unexpected pageIndex values
+  }
 };
 
 export default App;

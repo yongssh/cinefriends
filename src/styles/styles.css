@@ -1,5 +1,5 @@
 body {
-    background-color: #1A1A1A;
+    background-color: #14181c;
     color: #FFFFFF;
     font-family: Arial, sans-serif;
   }
@@ -26,11 +26,21 @@ body {
   
   button {
     background-color: #00A85D;
-    color: #FFFFFF;
+    color: #f7f7f7;
     border: none;
-    padding: 10px 20px;
-    border-radius: 4px;
     cursor: pointer;
+    padding: 0.35em 0.7em;
+    font-family: 'Roboto Slab', serif;
+    border-radius: 8px;
+  }
+  .next-page-button{
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    animation: fadeIn 1s ease-in;
+    opacity: 1;
   }
   
   button:hover {
@@ -53,3 +63,95 @@ body {
     color: #00A85D;
   }
   
+  h1{
+    font-family: 'Roboto Slab', serif;
+    font-weight: 600; 
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+  }
+   p{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+
+  .title-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Full height of the viewport */
+    text-align: center;
+  }
+  
+  .input-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  input {
+    padding: 10px;
+    font-size: 16px;
+    width: 80%;
+    max-width: 400px; /* Maximum width for the input */
+    margin-bottom: 10px;
+    font-family: "Roboto Slab", serif;
+  }
+  .competitive-intro{
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 20px; /* Space between heading and input container */
+  }
+
+  h2{
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-family: "Roboto Slab", serif;
+  }
+
+  h3{
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-family: "Roboto Slab", serif;
+  }
+  li{
+    font-family: "Roboto Slab", serif;
+  }
+
+
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes fade-in-out {
+    0% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+  
+  .loading {
+    font-size: 1.2em;
+    color: #888;
+    margin-top: 1em;
+    animation:  fade-in-out 5s infinite;
+    opacity: 1;
+    font-family: "Roboto Slab", serif;
+  }

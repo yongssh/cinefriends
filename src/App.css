@@ -1,6 +1,11 @@
 .App {
   text-align: center;
+  font-family: 'Roboto Slab', serif;
+  background-color: #14181c;
+
 }
+  
+
 
 .App-logo {
   height: 40vmin;
@@ -35,4 +40,20 @@
   to {
     transform: rotate(360deg);
   }
+}
+.h1{ 
+  font-family: 'Roboto Slab', serif;
+  font-weight: 600;
+}
+.p{
+  font-family: 'Roboto Slab', serif;
+}
+
+button {
+  background-color: #00A85D;
+  color: #f7f7f7;
+  border: none;
+  cursor: pointer;
+  padding: 0.35em 0.7em;
+  font-family: 'Roboto Slab', serif;
 }
