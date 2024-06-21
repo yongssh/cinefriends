@@ -1,5 +1,6 @@
-// MostReviews.js
+// getMostReviews.js
 import { getLastYearMovies } from "./getLastYearMovies";
+
 
 export const getMostReviewsUser = (userData) => {
   let mostReviewsUser = null;
@@ -25,5 +26,5 @@ export const getMostReviewsUser = (userData) => {
     }
   }
 
-  return mostReviewsUser;
+  return {mostReviewsUser, maxReviewsCount};
 };

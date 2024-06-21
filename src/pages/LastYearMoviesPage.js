@@ -5,6 +5,9 @@ const LastYearMoviesPage = ({ recentlyWatchedMovies, onClick }) => {
   return (
     <div>
       <h2>Movies Watched Last Year:</h2>
+      <p>
+        <button className="next-page-button" onClick={() => onClick(2)}>Next: Most Rewatches</button>
+      </p>
       {Object.keys(recentlyWatchedMovies).map((username) => (
         <div key={username}>
           <h3>{username}'s Movies Watched in {new Date().getFullYear() - 1}:</h3>
@@ -21,9 +24,7 @@ const LastYearMoviesPage = ({ recentlyWatchedMovies, onClick }) => {
           </ul>
         </div>
       ))}
-      <p>
-        <button className="next-page-button" onClick={() => onClick(2)}>Next: Most Rewatches</button>
-      </p>
+      
     </div>
   );
 };

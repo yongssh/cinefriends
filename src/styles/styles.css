@@ -69,12 +69,16 @@ body {
     align-items: center;
     justify-content: center;
     text-align: center;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 50px;
 
   }
    p{
     display: flex;
     justify-content: center;
     margin-top: 20px;
+    font-family: "Roboto Slab", serif;
   }
 
   .title-page {
@@ -154,4 +158,119 @@ body {
     animation:  fade-in-out 5s infinite;
     opacity: 1;
     font-family: "Roboto Slab", serif;
+    text-align: center;
   }
+
+  .page-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: 20px;
+    font-family: "Roboto Slab", serif;
+    
+  }
+  
+  .fade-in-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+    font-family: "Roboto Slab", serif;
+  }
+  
+  .fade-in-review,
+  .fade-in-header,
+  .fade-in-review-count {
+    opacity: 0;
+    animation: fadeIn 1s forwards;
+    margin: 10px 0;
+    font-family: "Roboto Slab", serif;
+  }
+  
+  @keyframes fadeInReview {
+    to {
+      opacity: 1;
+    }
+  }
+  
+  button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+ /* Base styles for the heatmap */
+.react-calendar-heatmap .color-empty {
+  fill: #eeeeee;
+}
+
+.react-calendar-heatmap .color-github-1 {
+  fill: #d6e685;
+}
+
+.react-calendar-heatmap .color-github-2 {
+  fill: #8cc665;
+}
+
+.react-calendar-heatmap .color-github-3 {
+  fill: #44a340;
+}
+
+.react-calendar-heatmap .color-github-4 {
+  fill: #1e6823;
+}
+
+/* Add styles for the calendar heatmap cells */
+.react-calendar-heatmap .react-calendar-heatmap-small {
+  width: 10px;
+  height: 10px;
+  margin: 1px;
+}
+
+/* Add hover effect */
+.react-calendar-heatmap .react-calendar-heatmap-small:hover {
+  stroke: #555;
+  stroke-width: 1px;
+}
+
+/* Add styles for the tooltip */
+.react-calendar-heatmap .react-calendar-heatmap-tooltip {
+  background: #14181c;
+  color: #fff;
+  padding: 5px;
+  border-radius: 10px;
+}
+/* FOR HEAT MAP */
+.heat-map-container {
+  width: 95vw;
+ 
+}
+
+.heat-map .day-label,
+.heat-map .month-label {
+  fill: #666;
+  font-size: 15px;
+  text-anchor: middle;
+  color: #fff;
+  font-family: "Roboto Slab", serif;
+}
+
+
+
+.axis-text {
+  font-family: "Roboto Slab", serif;
+  font-size: 12px;
+  /* Add more styling as needed */
+}
+
+.end-info{
+  font-family: "Roboto Slab", serif;
+  font-size: 8px;
+}
+
+.align-barchart{
+  align-items: center;
+}

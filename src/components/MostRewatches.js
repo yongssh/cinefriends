@@ -1,5 +1,3 @@
-// MostRewatches.js
-
 import { getLastYearMovies } from './getLastYearMovies';
 
 export const getMostRewatchesUser = (userData) => {
@@ -14,7 +12,7 @@ export const getMostRewatchesUser = (userData) => {
     // Count rewatched movies for the current user
     let rewatchCount = 0;
     for (const movie of lastYearMovies) {
-      if (movie.rewatch && movie.rewatch ===true) {
+      if (movie.rewatch) { // Assuming movie.rewatch is a boolean
         rewatchCount++;
       }
     }
@@ -22,7 +20,11 @@ export const getMostRewatchesUser = (userData) => {
     // Update most rewatches user if this user has more rewatches
     if (rewatchCount > maxRewatchesCount) {
       maxRewatchesCount = rewatchCount;
-      mostRewatchesUser = username;
+      mostRewatchesUser = {
+        username: username,
+        rewatchCount: rewatchCount,
+        title: lastYearMovies[0].film_title // Assuming title is the first movie's title
+      };
     }
   }
 
