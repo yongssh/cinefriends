@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useState } from 'react';
 import * as d3 from 'd3';
 
-const BarChart = ({ data }) => {
+const BarChart = ({ data, duration }) => {
   const svgRef = useRef();
   const [animatedData, setAnimatedData] = useState([]);
 
@@ -25,14 +25,15 @@ const BarChart = ({ data }) => {
     const xAxis = g => g
       .attr("transform", `translate(0,${height - margin.bottom})`)
       .call(d3.axisBottom(x).tickSizeOuter(0))
-      .style("font-family", "Roboto Slab");
-      ;
+      .style("font-family", "Roboto Slab")
+      .style("color", "#40bcf4");
 
     const yAxis = g => g
-    .attr("transform", `translate(${margin.left},0)`)
-    .call(d3.axisLeft(y).ticks(0)) 
-    .call(g => g.select(".domain").remove()) 
-    .style("font-family", "Roboto Slab");
+      .attr("transform", `translate(${margin.left},0)`)
+      .call(d3.axisLeft(y).ticks(0))
+      .call(g => g.select(".domain").remove())
+      .style("font-family", "Roboto Slab")
+      .style("color", "#40bcf4");
 
     // Enter transition for bars
     svg.append("g")
@@ -43,18 +44,33 @@ const BarChart = ({ data }) => {
       .attr("y", d => y(0)) // Start bars from y = 0
       .attr("height", 0) // Start bars with height = 0
       .attr("width", x.bandwidth())
-      .attr("fill", "steelblue")
+      .attr("fill", "#40bcf4")
       .transition()
-      .duration(1000) // Animation duration in milliseconds
+      .duration(duration) // Use the duration prop
       .attr("y", d => y(d.count)) // Final y position based on data
       .attr("height", d => y(0) - y(d.count)); // Final height based on data
+
+    // Add text labels on the bars
+    svg.append("g")
+      .selectAll("text")
+      .data(animatedData)
+      .join("text")
+      .attr("x", d => x(d.username) + x.bandwidth() / 2)
+      .attr("y", d => y(0)) // Start labels from y = 0
+      .attr("text-anchor", "middle")
+      .attr("font-family", "Roboto Slab")
+      .attr("fill", "#ff8000")
+      .transition()
+      .duration(duration) // Use the duration prop
+      .attr("y", d => y(d.count) - 5)
+      .text(d => d.count);
 
     svg.append("g")
       .call(xAxis);
 
     svg.append("g")
       .call(yAxis);
-  }, [data, animatedData]);
+  }, [data, animatedData, duration]);
 
   useEffect(() => {
     // When the data prop changes, update animatedData state to trigger animation

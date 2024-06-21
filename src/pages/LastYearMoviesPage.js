@@ -4,7 +4,7 @@ import '../styles/styles.css';
 const LastYearMoviesPage = ({ recentlyWatchedMovies, onClick }) => {
   return (
     <div>
-      <h2>Movies Watched Last Year:</h2>
+      <h2>Life is in the details. So let's take a look.</h2>
       <p>
         <button className="next-page-button" onClick={() => onClick(2)}>Next: Most Rewatches</button>
       </p>
