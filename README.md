@@ -70,4 +70,11 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 # we-watched-wrapped
 # we-watched-wrapped
+
+### Notes to Self: 
+
+deploy to github pages from gh-pages branch 
+npm run deploy
+(See https://blog.logrocket.com/deploying-react-apps-github-pages/)
+
 # we-watched-wrapped
