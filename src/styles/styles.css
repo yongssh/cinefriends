@@ -283,7 +283,7 @@ body {
 
 
 /* CarouselReviews.css */
-..review-slide {
+.review-slide {
   background: #556678;
   padding: 20px;
   border-radius: 10px;
