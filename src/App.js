@@ -6,6 +6,7 @@ import LastYearMoviesPage from './pages/LastYearMoviesPage';
 import MostRewatchesPage from './pages/MostRewatchesPage';
 import MostReviewsPage from './pages/MostReviewsPage';
 import EndPage from './pages/EndPage';
+import HeatMapPage from './pages/HeatMapPage'; // Import HeatMapPage
 import { getLastYearMovies } from './components/getLastYearMovies';
 import './styles/styles.css';
 import './App.css';
@@ -110,8 +111,15 @@ const App = () => {
     );
   } else if (pageIndex === 4) {
     return (
+      <HeatMapPage
+        onClick={() => setPageIndex(5)} // Navigate to pageIndex 5 (EndPage)
+        recentlyWatchedMovies={recentlyWatchedMovies}
+      />
+    );
+  } else if (pageIndex === 5) {
+    return (
       <EndPage
-        onClick={resetApp}
+        onClick={resetApp} // Reset the app
         recentlyWatchedMovies={recentlyWatchedMovies}
       />
     );

@@ -51,7 +51,7 @@ const MostReviewsPage = ({ recentlyWatchedMovies, onClick }) => {
       <p className="fade-in-review-count" style={{ animationDelay: `${(shuffledReviews.length + 1) * 2}s` }}>
         {mostReviewsUser ? `They wrote ${maxReviewsCount} reviews last year.` : ''}
       </p>
-      <button onClick={() => onClick(5)}>See More</button>
+      <button onClick={() => onClick(4)}>Next</button>
     </div>
   );
 };

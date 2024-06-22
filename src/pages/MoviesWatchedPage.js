@@ -5,7 +5,7 @@ import '../styles/styles.css';
 
 const MoviesWatchedPage = ({ moviesCountByUser, onClick }) => {
   const [data, setData] = useState([]);
-  const animationDuration = 1000; // Animation duration in milliseconds (1 second)
+  const animationDuration = 2000; // Animation duration in milliseconds (1 second)
 
   useEffect(() => {
     const newData = Object.keys(moviesCountByUser).map(username => ({
@@ -30,7 +30,7 @@ const MoviesWatchedPage = ({ moviesCountByUser, onClick }) => {
         <BarChart data={data} duration={animationDuration} />
       </div>
       <p>
-        <button className="next-page-button" onClick={() => onClick(2)}>Next: Last Year's Movies</button>
+        <button className="next-page-button" onClick={() => onClick(2)}>Next</button>
       </p>
     </div>
   );

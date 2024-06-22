@@ -180,16 +180,19 @@ body {
     align-items: center;
     margin-bottom: 20px;
     font-family: "Roboto Slab", serif;
+    margin-top: 40px;
   }
   
   .fade-in-review,
   .fade-in-header,
   .fade-in-review-count {
     opacity: 0;
-    animation: fadeIn 1s forwards;
+    animation: fadeIn 0.5s forwards;
     margin: 10px 0;
     font-family: "Roboto Slab", serif;
   }
+
+  
   
   @keyframes fadeInReview {
     to {
@@ -203,48 +206,6 @@ body {
     font-size: 16px;
     cursor: pointer;
   }
-  
- /* Base styles for the heatmap */
-.react-calendar-heatmap .color-empty {
-  fill: #eeeeee;
-}
-
-.react-calendar-heatmap .color-github-1 {
-  fill: #d6e685;
-}
-
-.react-calendar-heatmap .color-github-2 {
-  fill: #8cc665;
-}
-
-.react-calendar-heatmap .color-github-3 {
-  fill: #44a340;
-}
-
-.react-calendar-heatmap .color-github-4 {
-  fill: #1e6823;
-}
-
-/* Add styles for the calendar heatmap cells */
-.react-calendar-heatmap .react-calendar-heatmap-small {
-  width: 10px;
-  height: 10px;
-  margin: 1px;
-}
-
-/* Add hover effect */
-.react-calendar-heatmap .react-calendar-heatmap-small:hover {
-  stroke: #555;
-  stroke-width: 1px;
-}
-
-/* Add styles for the tooltip */
-.react-calendar-heatmap .react-calendar-heatmap-tooltip {
-  background: #14181c;
-  color: #fff;
-  padding: 5px;
-  border-radius: 10px;
-}
 /* FOR HEAT MAP */
 .heat-map-container {
   width: 95vw;
@@ -281,6 +242,15 @@ body {
   color: #40bcf4;
 }
 
+.genre-tag-cloud {
+  width: 100%;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
 .countup-container {
   display: flex;
   justify-content: center;
@@ -294,4 +264,56 @@ body {
   font-size: 16px;
   font-family: 'Roboto Slab', sans-serif;
   color: #ff8000; /* Set the font color to #ff8000 */
+}
+
+.poster-container {
+  display: flex;
+  justify-content: center;
+}
+
+.centered-poster {
+  width: 200px; /* Adjust width as needed */
+  transition: opacity 1s ease; /* Example fade-in transition */
+  opacity: 0; /* Start with opacity 0 */
+}
+
+.centered-poster.loaded {
+  opacity: 1; /* Fade in when loaded */
+}
+
+
+/* CarouselReviews.css */
+..review-slide {
+  background: #556678;
+  padding: 20px;
+  border-radius: 10px;
+  margin: 20px; /* Adjust margin as needed */
+  width: 300px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  color: #40bcf4;
+  text-align: center; /* Center align text */
+}
+
+
+.review-slide h3 {
+  margin-bottom: 10px;
+}
+
+.review-slide p {
+  margin: 5px 5px;
+  margin-bottom: 10px;
+}
+
+.review-poster-container{
+  width: 100px; /* Ensure the poster fits within its container */
+  height: auto; /* Maintain aspect ratio */
+  margin-bottom: 10px; /* Optional: Add margin for spacing */
+}
+
+.rewatch-text {
+  color: #ff8000;
+}
+
+.heat-map-heading{
+  color: #ff8000;
 }

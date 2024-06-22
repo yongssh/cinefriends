@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import '../styles/styles.css';
+// import TestFetchPage from '../TestFetchPage';
 
 const TitlePage = ({ usernamesInput, setUsernamesInput, handleFetchData, onClick, fetchedData, loading }) => {
   const [buttonPressed, setButtonPressed] = useState(false);
@@ -30,6 +31,7 @@ const TitlePage = ({ usernamesInput, setUsernamesInput, handleFetchData, onClick
     <div>
       <h1>So you're friends who like movies.<br/>Let's see who the real cinephile is.</h1>
       <div className="input-container">
+
         <input
           type="text"
           value={usernamesInput}
@@ -40,13 +42,14 @@ const TitlePage = ({ usernamesInput, setUsernamesInput, handleFetchData, onClick
         <button onClick={handleButtonClick} disabled={loading}>
           {loading ? 'Fetching Data...' : 'Fetch Data'}
         </button>
+
       </div>
       {loading && <p className="loading">“Difficult to see. Always in motion is the future.”<br/>–Yoda</p>}
       {fetchedData && (
         <div>
           <p>Start exploring your data from last year, and see just how well you stack up against each other.</p>
           <p>
-            <button className="next-page-button" onClick={() => onClick(0)}>Next: Movies Watched</button>
+            <button className="next-page-button" onClick={() => onClick(0)}>Begin</button>
           </p>
         </div>
       )}

@@ -1,30 +1,30 @@
 import React from 'react';
 import { getLastYearMovies } from '../components/getLastYearMovies';
-import '../styles/styles.css';
+import HeatMap from '../components/HeatMap';
+import CarouselReviews from '../components/CarouselReviews';
+import GenrePieChart from '../components/GenrePieChart';
+
 const LastYearMoviesPage = ({ recentlyWatchedMovies, onClick }) => {
   return (
     <div>
       <h2>Life is in the details. So let's take a look.</h2>
-      <p>
-        <button className="next-page-button" onClick={() => onClick(2)}>Next: Most Rewatches</button>
-      </p>
-      {Object.keys(recentlyWatchedMovies).map((username) => (
-        <div key={username}>
-          <h3>{username}'s Movies Watched in {new Date().getFullYear() - 1}:</h3>
-          <ul>
-            {getLastYearMovies(recentlyWatchedMovies[username]).map((movie, index) => (
-              <li key={index}>
-                <strong>{movie.film_title}</strong> ({movie.release_year})<br />
-                Date Watched: {movie.date_watched}<br />
-                Rating: {movie.rating || 'No Rating'}<br />
-                Rewatch: {movie.rewatch ? 'Yes' : 'No'}<br />
-                Review: {movie.review_text}
-              </li>
-            ))}
-          </ul>
-        </div>
-      ))}
-      
+      {Object.keys(recentlyWatchedMovies).map(username => {
+        const userMovies = getLastYearMovies(recentlyWatchedMovies[username]);
+        return (
+          <div key={username}>
+            <h2>Let's take a look at some of {username}'s highlights</h2>
+            <h3>{username}'s Movies Watched in {new Date().getFullYear() - 1}:</h3>
+            <HeatMap username={username} movies={userMovies} />
+            <div style={{ maxWidth: '80vw', margin: '0 auto' }}>
+              <CarouselReviews data={userMovies} username={username} />
+   
+            </div>
+            <p>
+              <button className="next-page-button" onClick={() => onClick(2)}>Next</button>
+            </p>
+          </div>
+        );
+      })}
     </div>
   );
 };

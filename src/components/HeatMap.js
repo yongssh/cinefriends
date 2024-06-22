@@ -1,79 +1,108 @@
-import React, { useRef, useEffect } from 'react';
-import * as d3 from 'd3'; // Import D3
-import { getLastYearMovies } from '../components/getLastYearMovies';
-import '../styles/styles.css'; // Import your CSS file
+import React, { useEffect, useRef } from 'react';
+import CalHeatmap from 'cal-heatmap';
+import 'cal-heatmap/cal-heatmap.css';
+import dayjs from 'dayjs';
+import localeData from 'dayjs/plugin/localeData';
+import Tooltip from 'cal-heatmap/plugins/Tooltip';
+import Legend from 'cal-heatmap/plugins/Legend';
+import CalendarLabel from 'cal-heatmap/plugins/CalendarLabel';
+import '../styles/styles.css'
+dayjs.extend(localeData);
 
-const Heatmap = ({ recentlyWatchedMovies }) => {
-  const svgRef = useRef(null);
-  const lastYear = new Date().getFullYear() - 1;
+const HeatMap = ({ movies, username }) => {
+  const calHeatmapRef = useRef(null);
 
   useEffect(() => {
-    const movies = Object.values(recentlyWatchedMovies).flatMap(getLastYearMovies); // Flatten and get movies
-    const monthMap = {
-      'Jan': 0, 'Feb': 1, 'Mar': 2, 'Apr': 3,
-      'May': 4, 'Jun': 5, 'Jul': 6, 'Aug': 7,
-      'Sep': 8, 'Oct': 9, 'Nov': 10, 'Dec': 11
-    };
-
-    const dateCounts = {};
-    movies.forEach((movie) => {
-      const [day, month, year] = movie.date_watched.split(' ');
-      const monthIndex = monthMap[month];
-      if (monthIndex !== undefined && !isNaN(day) && !isNaN(year)) {
-        const date = new Date(year, monthIndex, day);
-        if (date.getFullYear() === lastYear && !isNaN(date.getTime())) {
-          const isoDate = date.toISOString().split('T')[0];
-          dateCounts[isoDate] = (dateCounts[isoDate] || 0) + 1;
-        } else {
-          console.error(`Invalid date: ${day} ${month} ${year}`);
-        }
-      } else {
-        console.error(`Invalid date components: ${day} ${month} ${year}`);
-      }
-    });
-
-    const heatmapData = [];
-    const startDate = new Date(lastYear, 0, 1);
-    const endDate = new Date(lastYear, 11, 31);
-    let currentDate = new Date(startDate);
-    while (currentDate <= endDate) {
-      const isoDate = currentDate.toISOString().split('T')[0];
-      const count = dateCounts[isoDate] || 0;
-      heatmapData.push({ date: isoDate, count });
-      currentDate.setDate(currentDate.getDate() + 1);
+    if (!calHeatmapRef.current) {
+      calHeatmapRef.current = new CalHeatmap();
     }
 
-    // D3 code to render heatmap
-    const svg = d3.select(svgRef.current);
+    const cal = calHeatmapRef.current;
 
-    const cellSize = 20;
-    const width = 800; // Adjust as needed
-    const height = 400; // Adjust as needed
+    // Aggregate movies by date_watched
+    const movieCounts = {};
+    
+    movies.forEach(movie => {
+      const date = dayjs(movie.date_watched).format('YYYY-MM-DD');
+      if (!movieCounts[date]) {
+        movieCounts[date] = 0;
+      }
+      movieCounts[date] += 1; // Count each movie individually
+    });
 
-    svg.attr('width', width)
-       .attr('height', height);
+    const formattedMovies = Object.keys(movieCounts).map(date => ({
+      date_watched: new Date(date),
+      count: movieCounts[date],
+    }));
 
-    const colorScale = d3.scaleSequential()
-                        .domain([0, d3.max(heatmapData, d => d.count)])
-                        .interpolator(d3.interpolateBlues);
+    cal.paint(
+      {
+        data: {
+          source: formattedMovies,
+          type: 'json',
+          x: 'date_watched',
+          y: 'count',
+        },
+        date: { start: new Date(`${new Date().getFullYear() - 1}-01-01`) },
+        range: 1,
+        scale: {
+          color: {
+            interpolate: 'hsl',
+            type: 'threshold',
+            range: ['#fff','#aaebc2', '#00A85D','#0b7131','#065724'], // Removed extra '#' from color codes
+            domain: [1, 2, 3, 4, 5],
+          },
+        },
+        domain: {
+          type: 'year',
+          label: { text: null },
+        },
+        subDomain: { type: 'day', radius: 2 },
+        itemSelector: `#heatmap-${username}`,
+      },
+      [
+        [
+          Tooltip,
+          {
+            text: function (date, value, dayjsDate) {
+              const movieText = value === 1 ? 'movie' : 'movies';
+              return (
+                (value ? value + ' ' + movieText : 'No data') + ' on ' + dayjsDate.format('LL')
+              );
+            },
+          },
+        ],
+        [
+          Legend,
+          {
+            tickSize: 0,
+            width: 150,
+            itemSelector: `#heatmap-legend-${username}`,
+            label: 'Movies watched',
+          },
+        ],
+        [
+          CalendarLabel,
+          {
+            width: 30,
+            textAlign: 'start',
+            text: () => dayjs().localeData().weekdaysShort().map((d, i) => (i % 2 === 0 ? '' : d)),
+          },
+        ],
+      ]
+    );
 
-    svg.selectAll('rect')
-       .data(heatmapData)
-       .enter().append('rect')
-         .attr('x', d => new Date(d.date).getDate() * cellSize)
-         .attr('y', d => new Date(d.date).getMonth() * cellSize)
-         .attr('width', cellSize)
-         .attr('height', cellSize)
-         .attr('fill', d => colorScale(d.count));
-
-  }, [recentlyWatchedMovies, lastYear]);
+    return () => {
+      cal.destroy(); // Cleanup CalHeatmap instance when component unmounts
+    };
+  }, [movies, username]);
 
   return (
-    <div className="heat-map-container">
-      <h2>Movies Watched Last Year</h2>
-      <svg ref={svgRef}></svg>
+    <div style={{ textAlign: 'center', marginBottom: '10px' }}>
+      <div id={`heatmap-${username}`} style={{ display: 'inline-block', margin: '5px', padding: '5px'}} className="margin-bottom--md"></div>
+      <div id={`heatmap-legend-${username}`} style={{ display: 'inline-block', margin: '5px', padding: '5px' }}></div>
     </div>
   );
 };
 
-export default Heatmap;
+export default HeatMap;
