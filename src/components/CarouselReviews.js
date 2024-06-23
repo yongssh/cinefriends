@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import '../styles/styles.css'; // Custom styles for the carousel
-import { fetchMovieDetailsByName } from '../TMDBQuery';
+import { fetchMovieDetailsByName } from '../TMDBquery';
 
 const CarouselReviews = ({ data, username }) => {
   const [movieDetails, setMovieDetails] = useState([]);
@@ -30,11 +30,11 @@ const CarouselReviews = ({ data, username }) => {
   }, [data]);
 
   return (
-    <div style={{ textAlign: 'center' }}>
+    <div className="carousel-container">
       <Carousel showThumbs={false} infiniteLoop useKeyboardArrows autoPlay>
         {movieDetails.map((entry, index) => (
           <div key={index} className="review-slide">
-            <h3>{entry.film_title} ({entry.release_year})</h3>
+            <h3 className='carousel-title'>{entry.film_title} ({entry.release_year})</h3>
             {entry.posterUrl && (
               <img
                 src={entry.posterUrl}
@@ -45,7 +45,7 @@ const CarouselReviews = ({ data, username }) => {
             <p>Logged on&nbsp;<strong>{entry.date_watched}</strong></p>
             <p><strong>Rating:&nbsp; </strong>{entry.rating} / 5</p>
             <p><strong>Review:&nbsp; </strong>"{entry.review_text}"</p>
-            <p className='color=#ff8000'>{entry.rewatch === "true" ? "Rewatch" : "First Time Watch"}</p>
+            <p className='rewatch-text'>{entry.rewatch === "true" ? "Rewatch" : "First Time Watch"}</p>
           </div>
         ))}
       </Carousel>

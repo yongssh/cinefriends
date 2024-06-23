@@ -47,14 +47,15 @@ const TitlePage = ({ usernamesInput, setUsernamesInput, handleFetchData, onClick
       {loading && <p className="loading">“Difficult to see. Always in motion is the future.”<br/>–Yoda</p>}
       {fetchedData && (
         <div>
-          <p>Start exploring your data from last year, and see just how well you stack up against each other.</p>
+          <p>Start exploring your data from the previous calendar year, and see just how well you stack up against each other.</p>
           <p>
             <button className="next-page-button" onClick={() => onClick(0)}>Begin</button>
           </p>
         </div>
       )}
       {(buttonPressed && usernamesInput.trim() === '') && <p className="warning">Please enter at least one username.</p>}
-      {(buttonPressed && usernames.length < 2) && <p className="warning">You must input more than 1 username.</p>}
+       {(buttonPressed && usernames.length < 2) && <p className="warning">You must input more than 1 username.</p>}
+    <footer> This site was built for desktop viewing</footer>
     </div>
   );
 };

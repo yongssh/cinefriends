@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { getMostRewatchesUser } from '../components/MostRewatches'; // Adjust path as needed
-import { fetchMovieDetailsByName } from '../TMDBQuery'; // Adjust path as needed
+import { fetchMovieDetailsByName } from '../TMDBquery'; // Adjust path as needed
 import '../styles/styles.css';
 
 const MostRewatchesPage = ({ recentlyWatchedMovies, onClick }) => {

@@ -2,7 +2,12 @@
 body {
     background-color: #14181c;
     color: #FFFFFF;
-    font-family: Arial, sans-serif;
+    font-family: "Roboto Slab", sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    
   }
   
   .container {
@@ -20,7 +25,7 @@ body {
   input[type="text"] {
     width: calc(100% - 120px);
     padding: 10px;
-    margin-right: 10px;
+
     border: 1px solid #CCCCCC;
     border-radius: 4px;
   }
@@ -35,6 +40,8 @@ body {
     border-radius: 8px;
   }
   .next-page-button{
+    text-align: center; 
+    align-items: center;
     display: inline-block;
     margin-top: 20px;
     padding: 10px 20px;
@@ -71,8 +78,7 @@ body {
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding-left: 20px;
-    padding-right: 20px;
+
     padding-top: 50px;
 
   }
@@ -282,32 +288,57 @@ body {
 }
 
 
-/* CarouselReviews.css */
+
+/* Carousel Styling */
+.carousel-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  max-width: 80vw;
+  box-sizing: border-box; /* Ensure padding and border are included in the width and height */
+  padding: 0; /* Remove unnecessary padding */
+  margin-bottom: 30px;
+}
+
 .review-slide {
-  background: #556678;
-  padding: 20px;
-  border-radius: 10px;
-  margin: 20px; /* Adjust margin as needed */
-  width: 300px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  color: #40bcf4;
-  text-align: center; /* Center align text */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 10px; /* Adjust padding as needed */
+  box-sizing: border-box;
 }
 
-
-.review-slide h3 {
+.carousel-title {
+  font-size: 1.5em;
   margin-bottom: 10px;
 }
 
-.review-slide p {
-  margin: 5px 5px;
-  margin-bottom: 10px;
+.carousel img {
+  margin-bottom: 20px;
+  max-width: 100%; /* Ensure images scale down if too large */
+  height: auto;
+}
+
+.carousel .control-dots {
+  position: absolute;
+  margin-top: 15px;
+  bottom: 10px; /* position the dots higher or lower */
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
 }
 
 .review-poster-container{
   width: 100px; /* Ensure the poster fits within its container */
   height: auto; /* Maintain aspect ratio */
   margin-bottom: 10px; /* Optional: Add margin for spacing */
+  align-content: center;
+  justify-content: center;
 }
 
 .rewatch-text {
@@ -315,5 +346,20 @@ body {
 }
 
 .heat-map-heading{
+  color: #ff8000;
+}
+
+footer{
+  margin-top: auto;
+
+  font-size: 5px;
+  text-align: center;
+  width: 100%;
+  position: sticky;
+  bottom: 0;
+  font-family: 'Roboto Slab', sans-serif;
+}
+
+.carousel-title{
   color: #ff8000;
 }

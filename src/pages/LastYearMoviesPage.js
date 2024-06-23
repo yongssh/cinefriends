@@ -2,7 +2,7 @@ import React from 'react';
 import { getLastYearMovies } from '../components/getLastYearMovies';
 import HeatMap from '../components/HeatMap';
 import CarouselReviews from '../components/CarouselReviews';
-import GenrePieChart from '../components/GenrePieChart';
+
 
 const LastYearMoviesPage = ({ recentlyWatchedMovies, onClick }) => {
   return (
@@ -14,17 +14,15 @@ const LastYearMoviesPage = ({ recentlyWatchedMovies, onClick }) => {
           <div key={username}>
             <h2>Let's take a look at some of {username}'s highlights</h2>
             <h3>{username}'s Movies Watched in {new Date().getFullYear() - 1}:</h3>
-            <HeatMap username={username} movies={userMovies} />
-            <div style={{ maxWidth: '80vw', margin: '0 auto' }}>
+            <div className="carousel-container">
               <CarouselReviews data={userMovies} username={username} />
-   
             </div>
-            <p>
-              <button className="next-page-button" onClick={() => onClick(2)}>Next</button>
-            </p>
+            
           </div>
         );
-      })}
+      })}<p>
+       <button className="next-page-button" onClick={() => onClick(2)}>Next</button>
+       </p>
     </div>
   );
 };

@@ -1,6 +1,7 @@
 {
   "name": "we-watch-wrapped",
   "version": "0.1.0",
+  "homepage": "https://yongssh.github.io/cinefriends/",
   "private": true,
   "dependencies": {
     "@aws-sdk/client-cognito-identity": "^3.600.0",
