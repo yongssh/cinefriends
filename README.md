@@ -1,8 +1,9 @@
 Cinefriends is an app for movie-loving friends to compare viewing habits from the last calendar year. This was built with React, with backend scripts stored in AWS Lambda and S3. 
 
-### Notes to Self: 
+### Notes: 
 
-deploy to github pages from gh-pages branch 
+deploy to github pages from gh-pages branch (switch branches to push to gh-pages)
+npm run build
 npm run deploy
 (See https://blog.logrocket.com/deploying-react-apps-github-pages/)
 
