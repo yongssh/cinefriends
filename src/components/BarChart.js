@@ -13,21 +13,25 @@ const BarChart = ({ data, duration }) => {
     const width = 800 - margin.left - margin.right;
     const height = 400 - margin.top - margin.bottom;
 
+    // initialize x-variable (will display usernames)
     const x = d3.scaleBand()
       .domain(data.map(d => d.username))
       .range([margin.left, width - margin.right])
       .padding(0.1);
 
+    // initialize y-variable (will display actual)
     const y = d3.scaleLinear()
       .domain([0, d3.max(data, d => d.count)]).nice()
       .range([height - margin.bottom, margin.top]);
 
+    // initialize x axis 
     const xAxis = g => g
       .attr("transform", `translate(0,${height - margin.bottom})`)
       .call(d3.axisBottom(x).tickSizeOuter(0))
       .style("font-family", "Roboto Slab")
       .style("color", "#40bcf4");
 
+    // initialize y axis 
     const yAxis = g => g
       .attr("transform", `translate(${margin.left},0)`)
       .call(d3.axisLeft(y).ticks(0))
@@ -35,33 +39,40 @@ const BarChart = ({ data, duration }) => {
       .style("font-family", "Roboto Slab")
       .style("color", "#40bcf4");
 
-    // Enter transition for bars
+    // enter transition for bars
     svg.append("g")
       .selectAll("rect")
       .data(animatedData)
       .join("rect")
       .attr("x", d => x(d.username))
-      .attr("y", d => y(0)) // Start bars from y = 0
-      .attr("height", 0) // Start bars with height = 0
+       // Start bars from y = 0 (initialize y=0)
+      .attr("y", d => y(0))
+      // Start bars with height = 0
+      .attr("height", 0) 
       .attr("width", x.bandwidth())
       .attr("fill", "#40bcf4")
       .transition()
-      .duration(duration) // Use the duration prop
-      .attr("y", d => y(d.count)) // Final y position based on data
-      .attr("height", d => y(0) - y(d.count)); // Final height based on data
+      // Use  duration prop
+      .duration(duration)
+      // Final y position based on number of movies viewed
+      .attr("y", d => y(d.count)) 
+      // Final height based on data
+      .attr("height", d => y(0) - y(d.count)); 
 
-    // Add text labels on the bars
+    // add text labels on the bars
     svg.append("g")
       .selectAll("text")
       .data(animatedData)
       .join("text")
       .attr("x", d => x(d.username) + x.bandwidth() / 2)
-      .attr("y", d => y(0)) // Start labels from y = 0
+      // Start labels from y = 0
+      .attr("y", d => y(0)) 
       .attr("text-anchor", "middle")
       .attr("font-family", "Roboto Slab")
       .attr("fill", "#ff8000")
       .transition()
-      .duration(duration) // Use the duration prop
+      // Use the duration prop
+      .duration(duration) 
       .attr("y", d => y(d.count) - 5)
       .text(d => d.count);
 
