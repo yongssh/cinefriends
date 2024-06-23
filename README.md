@@ -2,9 +2,9 @@ Cinefriends is an app for movie-loving friends to compare viewing habits from th
 
 ### Notes: 
 
-deploy to github pages from gh-pages branch (switch branches to push to gh-pages) \n
-npm run build \n
-npm run deploy \n
+deploy to github pages from gh-pages branch (switch branches to push to gh-pages) \
+npm run build \
+npm run deploy \
 (See https://blog.logrocket.com/deploying-react-apps-github-pages/)
 
 
