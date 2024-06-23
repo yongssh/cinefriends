@@ -1,6 +1,7 @@
 import axios from 'axios';
+import * as Secret from './secret/secret';
 
-const API_KEY = '807e85168ae455c6cc5f564d5cbd9b6c';
+const API_KEY = Secret.TMDB_API_KEY;
 const BASE_URL = 'https://api.themoviedb.org/3';
 const IMAGE_BASE_URL = 'https://image.tmdb.org/t/p/w500'; // You can choose a different size if needed
 
