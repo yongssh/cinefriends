@@ -1,4 +1,4 @@
-Cinefriends is an app for movie-loving friends to compare viewing habits from the last calendar year. This was built with React, with backend scripts stored in AWS Lambda and S3. 
+Cinefriends is a platform for movie-loving friends to compare viewing habits from the last calendar year, using Letterboxd data and The Movie Database (TMDB) API). This was built with React, with backend scripts stored in AWS. 
 
 ### Notes: 
 
