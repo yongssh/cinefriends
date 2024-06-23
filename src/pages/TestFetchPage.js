@@ -1,6 +1,6 @@
 // TestFetchPage.js
 import React, { useState } from 'react';
-import { fetchMovieDetailsByName } from '../TMDBQuery';
+import { fetchMovieDetailsByName } from '../TMDBquery';
 
 const TestFetchPage = () => {
   const [movieName, setMovieName] = useState('');
