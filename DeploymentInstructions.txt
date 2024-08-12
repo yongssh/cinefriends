@@ -1,0 +1,8 @@
+# Instructions for deploying to GitHub Pages 
+
+git add . \
+git commit -m "message" \
+npm run build \
+git pull origin main \
+git push origin main \
+npm run deploy \

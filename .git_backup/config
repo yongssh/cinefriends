@@ -1,0 +1,12 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+	bare = false
+	logallrefupdates = true
+	ignorecase = true
+	precomposeunicode = true
+[pull]
+	rebase = true
+[user]
+	name = yongssh
+	email = yongyu.yy.huang@gmail.com

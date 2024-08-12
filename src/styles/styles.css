@@ -1,0 +1,365 @@
+
+body {
+    background-color: #14181c;
+    color: #FFFFFF;
+    font-family: "Roboto Slab", sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    
+  }
+  
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .input-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  
+  input[type="text"] {
+    width: calc(100% - 120px);
+    padding: 10px;
+
+    border: 1px solid #CCCCCC;
+    border-radius: 4px;
+  }
+  
+  button {
+    background-color: #00A85D;
+    color: #f7f7f7;
+    border: none;
+    cursor: pointer;
+    padding: 0.35em 0.7em;
+    font-family: 'Roboto Slab', serif;
+    border-radius: 8px;
+  }
+  .next-page-button{
+    text-align: center; 
+    align-items: center;
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    animation: fadeIn 1s ease-in;
+    opacity: 1;
+  }
+  
+  button:hover {
+    background-color: #007F4B;
+  }
+  
+  .movie-list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .movie-list li {
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #2A2A2A;
+    border-radius: 4px;
+  }
+  
+  h2 {
+    color: #00A85D;
+    margin-top: 40px;
+  }
+  
+  h1{
+    font-family: 'Roboto Slab', serif;
+    font-weight: 600; 
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    padding-top: 50px;
+
+  }
+   p{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    font-family: "Roboto Slab", serif;
+  }
+
+  .title-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Full height of the viewport */
+    text-align: center;
+  }
+  
+  .input-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  input {
+    padding: 10px;
+    font-size: 16px;
+    width: 80%;
+    max-width: 400px; /* Maximum width for the input */
+    margin-bottom: 10px;
+    font-family: "Roboto Slab", serif;
+  }
+  .competitive-intro{
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 20px; /* Space between heading and input container */
+  }
+
+  h2{
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-family: "Roboto Slab", serif;
+  }
+
+  h3{
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-family: "Roboto Slab", serif;
+  }
+  li{
+    font-family: "Roboto Slab", serif;
+  }
+
+
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes fade-in-out {
+    0% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+  
+  .loading {
+    font-size: 1.2em;
+    color: #888;
+    margin-top: 1em;
+    animation:  fade-in-out 5s infinite;
+    opacity: 1;
+    font-family: "Roboto Slab", serif;
+    text-align: center;
+  }
+
+  .page-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: 20px;
+    font-family: "Roboto Slab", serif;
+    
+  }
+  
+  .fade-in-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+    font-family: "Roboto Slab", serif;
+    margin-top: 40px;
+  }
+  
+  .fade-in-review,
+  .fade-in-header,
+  .fade-in-review-count {
+    opacity: 0;
+    animation: fadeIn 0.5s forwards;
+    margin: 10px 0;
+    font-family: "Roboto Slab", serif;
+  }
+
+  
+  
+  @keyframes fadeInReview {
+    to {
+      opacity: 1;
+    }
+  }
+  
+  button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+/* FOR HEAT MAP */
+.heat-map-container {
+  width: 95vw;
+ 
+}
+
+.heat-map .day-label,
+.heat-map .month-label {
+  fill: #666;
+  font-size: 15px;
+  text-anchor: middle;
+  color: #fff;
+  font-family: "Roboto Slab", serif;
+}
+
+
+
+.axis-text {
+  font-family: "Roboto Slab", serif;
+  font-size: 12px;
+  /* Add more styling as needed */
+}
+
+.end-info{
+  font-family: "Roboto Slab", serif;
+  font-size: 8px;
+}
+
+.align-barchart{
+  margin-top: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #40bcf4;
+}
+
+.genre-tag-cloud {
+  width: 100%;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.countup-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+  margin-top: 40px;
+}
+
+.countup-item {
+  margin: 0 10px;
+  font-size: 16px;
+  font-family: 'Roboto Slab', sans-serif;
+  color: #ff8000; /* Set the font color to #ff8000 */
+}
+
+.poster-container {
+  display: flex;
+  justify-content: center;
+}
+
+.centered-poster {
+  width: 200px; /* Adjust width as needed */
+  transition: opacity 1s ease; /* Example fade-in transition */
+  opacity: 0; /* Start with opacity 0 */
+}
+
+.centered-poster.loaded {
+  opacity: 1; /* Fade in when loaded */
+}
+
+
+
+/* Carousel Styling */
+.carousel-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  max-width: 80vw;
+  box-sizing: border-box; /* Ensure padding and border are included in the width and height */
+  padding: 0; /* Remove unnecessary padding */
+  margin-bottom: 30px;
+}
+
+.review-slide {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 10px; /* Adjust padding as needed */
+  box-sizing: border-box;
+}
+
+.carousel-title {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+.carousel img {
+  margin-bottom: 20px;
+  max-width: 100%; /* Ensure images scale down if too large */
+  height: auto;
+}
+
+.carousel .control-dots {
+  position: absolute;
+  margin-top: 15px;
+  bottom: 10px; /* position the dots higher or lower */
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+}
+
+.review-poster-container{
+  width: 100px; /* Ensure the poster fits within its container */
+  height: auto; /* Maintain aspect ratio */
+  margin-bottom: 10px; /* Optional: Add margin for spacing */
+  align-content: center;
+  justify-content: center;
+}
+
+.rewatch-text {
+  color: #ff8000;
+}
+
+.heat-map-heading{
+  color: #ff8000;
+}
+
+footer{
+  margin-top: auto;
+
+  font-size: 5px;
+  text-align: center;
+  width: 100%;
+  position: sticky;
+  bottom: 0;
+  font-family: 'Roboto Slab', sans-serif;
+}
+
+.carousel-title{
+  color: #ff8000;
+}
