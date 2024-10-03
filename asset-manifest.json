@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/cinefriends/static/css/main.e5c14d5d.css",
+    "main.css": "/cinefriends/static/css/main.f1748621.css",
     "main.js": "/cinefriends/static/js/main.6d27c403.js",
     "static/js/3550.ba12b004.chunk.js": "/cinefriends/static/js/3550.ba12b004.chunk.js",
     "static/js/7749.0827a892.chunk.js": "/cinefriends/static/js/7749.0827a892.chunk.js",
@@ -148,7 +148,7 @@
     "static/js/1192.166a7b2d.chunk.js": "/cinefriends/static/js/1192.166a7b2d.chunk.js",
     "static/js/6453.73dbfeaf.chunk.js": "/cinefriends/static/js/6453.73dbfeaf.chunk.js",
     "index.html": "/cinefriends/index.html",
-    "main.e5c14d5d.css.map": "/cinefriends/static/css/main.e5c14d5d.css.map",
+    "main.f1748621.css.map": "/cinefriends/static/css/main.f1748621.css.map",
     "main.6d27c403.js.map": "/cinefriends/static/js/main.6d27c403.js.map",
     "3550.ba12b004.chunk.js.map": "/cinefriends/static/js/3550.ba12b004.chunk.js.map",
     "7749.0827a892.chunk.js.map": "/cinefriends/static/js/7749.0827a892.chunk.js.map",
@@ -297,7 +297,7 @@
     "6453.73dbfeaf.chunk.js.map": "/cinefriends/static/js/6453.73dbfeaf.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.e5c14d5d.css",
+    "static/css/main.f1748621.css",
     "static/js/main.6d27c403.js"
   ]
 }
