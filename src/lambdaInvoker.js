@@ -1,13 +1,13 @@
 import { InvokeCommand } from "@aws-sdk/client-lambda";
 import { lambdaClient } from "./lambdaClient";
 
-const functionName = "lambda-letterboxd-diary"; // Replace with your Lambda function name
+const functionName = "lambda-letterboxd-diary"; 
 
 const invokeLambdaFunction = async (username) => {
   try {
     const params = {
       FunctionName: functionName,
-      InvocationType: "RequestResponse", // Sync invocation
+      InvocationType: "RequestResponse", 
       Payload: JSON.stringify({ username }),
     };
 
