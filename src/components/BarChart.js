@@ -7,7 +7,8 @@ const BarChart = ({ data, duration }) => {
 
   useEffect(() => {
     const svg = d3.select(svgRef.current);
-    svg.selectAll("*").remove(); // Clear previous elements
+    // Clear previous elements
+    svg.selectAll("*").remove(); 
 
     const margin = { top: 20, right: 30, bottom: 40, left: 40 };
     const width = 800 - margin.left - margin.right;
@@ -52,11 +53,11 @@ const BarChart = ({ data, duration }) => {
       .attr("width", x.bandwidth())
       .attr("fill", "#40bcf4")
       .transition()
-      // Use  duration prop
+     
       .duration(duration)
-      // Final y position based on number of movies viewed
+      // final y position based on number of movies viewed
       .attr("y", d => y(d.count)) 
-      // Final height based on data
+      // final height based on data
       .attr("height", d => y(0) - y(d.count)); 
 
     // add text labels on the bars
@@ -65,13 +66,12 @@ const BarChart = ({ data, duration }) => {
       .data(animatedData)
       .join("text")
       .attr("x", d => x(d.username) + x.bandwidth() / 2)
-      // Start labels from y = 0
+      // labels start from y = 0!!
       .attr("y", d => y(0)) 
       .attr("text-anchor", "middle")
       .attr("font-family", "Roboto Slab")
       .attr("fill", "#ff8000")
       .transition()
-      // Use the duration prop
       .duration(duration) 
       .attr("y", d => y(d.count) - 5)
       .text(d => d.count);
@@ -84,7 +84,7 @@ const BarChart = ({ data, duration }) => {
   }, [data, animatedData, duration]);
 
   useEffect(() => {
-    // When the data prop changes, update animatedData state to trigger animation
+    // when the data prop changes, rmbr update animatedData state to trigger animation start
     setAnimatedData(data);
   }, [data]);
 
