@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
-import '../styles/styles.css'; // Custom styles for the carousel
+import '../styles/styles.css';
 import { fetchMovieDetailsByName } from '../TMDBquery';
 
 const CarouselReviews = ({ data, username }) => {
@@ -19,7 +19,8 @@ const CarouselReviews = ({ data, username }) => {
             return { ...movie, posterUrl: movieDetail.posterUrl };
           } catch (error) {
             console.error(`Error fetching details for ${movie.film_title}:`, error);
-            return { ...movie, posterUrl: '' }; // Fallback if no poster is found
+            //  if no poster is found, fall back
+            return { ...movie, posterUrl: '' }; d
           }
         })
       );
