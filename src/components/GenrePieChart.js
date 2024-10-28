@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { Pie } from 'react-chartjs-2';
-import { fetchMovieDetailsByName } from '../TMDBQuery'; // Assuming this is the correct import path
+import { fetchMovieDetailsByName } from '../TMDBQuery'; 
 const GenrePieChart = ({ movies }) => {
   const [genreData, setGenreData] = useState({ labels: [], data: [] });
 
   useEffect(() => {
-    if (!movies || movies.length === 0) return; // Exit early if movies is undefined or empty
+    // exit  if movies is undefined or empty
+    if (!movies || movies.length === 0) return; 
 
     const fetchGenres = async () => {
       try {
@@ -27,7 +28,7 @@ const GenrePieChart = ({ movies }) => {
           datasets: [
             {
               data: Object.values(genreCounts),
-              backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF'], // Add more colors as needed
+              backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF'], 
               hoverBackgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF'],
             },
           ],
@@ -40,7 +41,8 @@ const GenrePieChart = ({ movies }) => {
     };
 
     fetchGenres();
-  }, [movies]); // Ensure useEffect runs when movies changes
+    // ensure useEffect runs when movies changes... 
+  }, [movies]); 
 
   if (!movies || movies.length === 0) {
     return <div>No movies data available.</div>;
