@@ -32,4 +32,4 @@ function AboutMe({onClick}) {
     
   }
 
-export default AboutMe; // "export default" keywords specify the main component of the file
+export default AboutMe;  

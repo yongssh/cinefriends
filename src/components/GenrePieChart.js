@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { Pie } from 'react-chartjs-2';
-import { fetchMovieDetailsByName } from '../TMDBQuery'; // Assuming this is the correct import path
+import { fetchMovieDetailsByName } from '../TMDBQuery'; 
 const GenrePieChart = ({ movies }) => {
   const [genreData, setGenreData] = useState({ labels: [], data: [] });
 
   useEffect(() => {
-    if (!movies || movies.length === 0) return; // Exit early if movies is undefined or empty
-
+    if (!movies || movies.length === 0) return;
     const fetchGenres = async () => {
       try {
         const genreCounts = {};

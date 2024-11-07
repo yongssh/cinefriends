@@ -1,10 +1,9 @@
-// getLastYearMovies.js
-
 export const getLastYearMovies = (diaryData) => {
-  // Ensure diaryData is an array and not empty
+  // check diaryData is an array, NOT empty
   if (!Array.isArray(diaryData)) {
       console.error('diaryData is not an array:', diaryData);
-      return []; // Return empty array or handle error appropriately
+      // return empty array
+      return []; 
   }
   
   const currentYear = new Date().getFullYear();
@@ -30,11 +29,11 @@ export const getLastYearMovies = (diaryData) => {
   // Sort filtered movies by date_watched in descending order
   const sortedMovies = filteredMovies.sort((a, b) => new Date(b.date_watched) - new Date(a.date_watched));
 
-  // Convert rewatch from string to boolean where applicable
+  // Convert rewatch from string to boolean 
   const convertedmovies = sortedMovies.map(movie => ({
       ...movie,
-      rewatch: movie.rewatch === 'true', // Assuming rewatch is a string 'true' or 'false'
-      rating: parseInt(movie.rating) || 'No Rating' // Convert rating to integer, handle NaN with fallback
+      rewatch: movie.rewatch === 'true', 
+      rating: parseInt(movie.rating) || 'No Rating'  
   }));
 
   console.log('Movies with Rewatch and Rating:', convertedmovies);
