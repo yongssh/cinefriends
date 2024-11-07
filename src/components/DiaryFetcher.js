@@ -15,11 +15,11 @@ const DiaryFetcher = ({ onDiariesFetched }) => {
 
       const processedResults = diaries.map(diary => {
         const { entries } = diary;
-        return { username: diary.username, entries }; // Adjust to include all needed info
+        return { username: diary.username, entries };
       });
 
       setResults(processedResults);
-      onDiariesFetched(processedResults); // Pass results up to the parent component
+      onDiariesFetched(processedResults); 
     } catch (error) {
       console.error('Error fetching diaries:', error);
     }

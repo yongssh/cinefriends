@@ -14,7 +14,8 @@ const BarChart = ({ data, duration }) => {
 
   useEffect(() => {
     const svg = d3.select(svgRef.current);
-    svg.selectAll("*").remove(); // Clear previous elements
+    // Clear previous elements
+    svg.selectAll("*").remove(); 
 
     // Set dynamic width and height based on screen size
     const margin = { top: 20, right: 30, bottom: 40, left: 40 };
@@ -61,9 +62,11 @@ const BarChart = ({ data, duration }) => {
       .attr("width", x.bandwidth())
       .attr("fill", "#FFF")
       .transition()
+
       .duration(duration)
       .attr("y", d => y(d.count))
       .attr("height", d => y(0) - y(d.count));
+
 
     // Add text labels on bars
     svg.append("g")
@@ -71,12 +74,15 @@ const BarChart = ({ data, duration }) => {
       .data(animatedData)
       .join("text")
       .attr("x", d => x(d.username) + x.bandwidth() / 2)
-      .attr("y", d => y(0))
+      // labels start from y = 0!!
+      .attr("y", d => y(0)) 
+
       .attr("text-anchor", "middle")
       .attr("font-family", "Roboto Slab")
       .attr("fill", "#ff8000")
       .transition()
       .duration(duration)
+
       .attr("y", d => y(d.count) - 5)
       .text(d => d.count);
 

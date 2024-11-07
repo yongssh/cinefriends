@@ -3,11 +3,11 @@ import * as Secret from './secret/secret';
 
 const API_KEY = Secret.TMDB_API_KEY;
 const BASE_URL = 'https://api.themoviedb.org/3';
-const IMAGE_BASE_URL = 'https://image.tmdb.org/t/p/w500'; // You can choose a different size if needed
+const IMAGE_BASE_URL = 'https://image.tmdb.org/t/p/w500'; 
 
 export const fetchMovieDetailsByName = async (movieName, releaseYear = null) => {
   try {
-    // First, search for the movie by name
+    // search movie name
     let searchUrl = `${BASE_URL}/search/movie?api_key=${API_KEY}&query=${encodeURIComponent(movieName)}`;
     if (releaseYear) {
       searchUrl += `&year=${releaseYear}`;
@@ -20,13 +20,13 @@ export const fetchMovieDetailsByName = async (movieName, releaseYear = null) => 
       throw new Error('No movies found with that name.');
     }
 
-    // Filter by exact title match (case-insensitive)
+    // filter by title match 
     const exactMatch = searchResults.find(movie => movie.title.toLowerCase() === movieName.toLowerCase());
 
-    // Use the exact match if found, otherwise fallback to the first result
+    // use exact match if found, otherwise use the first result
     const movieId = exactMatch ? exactMatch.id : searchResults[0].id;
 
-    // Fetch movie details by ID
+    // fetch movie details by ID
     const movieDetailsResponse = await axios.get(`${BASE_URL}/movie/${movieId}?api_key=${API_KEY}`);
     const creditsResponse = await axios.get(`${BASE_URL}/movie/${movieId}/credits?api_key=${API_KEY}`);
 
@@ -39,7 +39,8 @@ export const fetchMovieDetailsByName = async (movieName, releaseYear = null) => 
     const genres = movieDetails.genres.map(genre => genre.name).join(', ');
 
     const posterUrl = `${IMAGE_BASE_URL}${movieDetails.poster_path}`;
-    console.log('Poster URL:', posterUrl); // Log the poster URL for debugging
+    // print poster url?? to check ??
+    // console.log('Poster URL:', posterUrl); 
 
     return {
       ...movieDetails,
@@ -47,10 +48,10 @@ export const fetchMovieDetailsByName = async (movieName, releaseYear = null) => 
       countryOfOrigin,
       languages,
       genres,
-      posterUrl, // Add poster URL to the returned object
+      posterUrl,
     };
   } catch (error) {
     console.error('Error fetching movie details:', error);
-    throw error; // Handle error as needed
+    throw error; 
   }
 };

@@ -18,7 +18,9 @@ const CarouselReviews = ({ data, username }) => {
             return { ...movie, posterUrl: movieDetail.posterUrl };
           } catch (error) {
             console.error(`Error fetching details for ${movie.film_title}:`, error);
+
             return { ...movie, posterUrl: '' };
+
           }
         })
       );

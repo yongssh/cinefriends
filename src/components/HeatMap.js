@@ -49,7 +49,8 @@ const HeatMap = ({ movies, username }) => {
           color: {
             interpolate: 'hsl',
             type: 'threshold',
-            range: ['#fff','#aaebc2', '#00A85D','#0b7131','#065724'], // Removed extra '#' from color codes
+            // mmmm do i like these colors? but they match
+            range: ['#fff','#aaebc2', '#00A85D','#0b7131','#065724'], 
             domain: [1, 2, 3, 4, 5],
           },
         },
@@ -93,7 +94,7 @@ const HeatMap = ({ movies, username }) => {
     );
 
     return () => {
-      cal.destroy(); // Cleanup CalHeatmap instance when component unmounts
+      cal.destroy(); 
     };
   }, [movies, username]);
 

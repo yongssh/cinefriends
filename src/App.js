@@ -6,7 +6,7 @@ import LastYearMoviesPage from './pages/LastYearMoviesPage';
 import MostRewatchesPage from './pages/MostRewatchesPage';
 import MostReviewsPage from './pages/MostReviewsPage';
 import EndPage from './pages/EndPage';
-import HeatMapPage from './pages/HeatMapPage'; // Import HeatMapPage
+import HeatMapPage from './pages/HeatMapPage'; 
 import { getLastYearMovies } from './components/getLastYearMovies';
 import './styles/styles.css';
 import './App.css';
@@ -14,14 +14,19 @@ import './App.css';
 const App = () => {
   const [usernamesInput, setUsernamesInput] = useState('');
   const [recentlyWatchedMovies, setRecentlyWatchedMovies] = useState({});
-  const [pageIndex, setPageIndex] = useState(-1); // Initial page index, -1 for title page
-  const [loading, setLoading] = useState(false); // Loading state
-  const [fetchedData, setFetchedData] = useState(false); // Checks if username data has been fetched from lambda
+
+  // initial page index, -1 for title page
+  const [pageIndex, setPageIndex] = useState(-1); 
+  const [loading, setLoading] = useState(false); 
+  // check if username data has been fetched from lambda
+  const [fetchedData, setFetchedData] = useState(false); 
 
   const handleFetchData = async () => {
     try {
-      setLoading(true); // Set loading to true when fetch starts
-      setFetchedData(false); // Reset fetchedData to false when fetch starts
+      // set loading to true when fetch starts
+      setLoading(true);
+      // reset fetchedData to false 
+      setFetchedData(false); 
       const usernamesArray = usernamesInput.split(',').map(username => username.trim());
       let allTopMovies = {};
 
@@ -45,12 +50,14 @@ const App = () => {
       }
 
       setRecentlyWatchedMovies(allTopMovies);
-      console.log('All top movies:', allTopMovies);
-      setFetchedData(true); // Set fetchedData to true when fetch completes successfully
+      //console.log('All top movies:', allTopMovies);
+      // set fetchedData to true when fetch completes successfully
+      setFetchedData(true); 
     } catch (error) {
       console.error('Error fetching data:', error);
     } finally {
-      setLoading(false); // Set loading to false when fetch completes
+      // Set loading to false when fetch completes
+      setLoading(false); 
     }
   };
 
@@ -112,19 +119,20 @@ const App = () => {
   } else if (pageIndex === 4) {
     return (
       <HeatMapPage
-        onClick={() => setPageIndex(5)} // Navigate to pageIndex 5 (EndPage)
+    // goes to end page!
+        onClick={() => setPageIndex(5)})
         recentlyWatchedMovies={recentlyWatchedMovies}
       />
     );
   } else if (pageIndex === 5) {
     return (
       <EndPage
-        onClick={resetApp} // Reset the app
+        onClick={resetApp} 
         recentlyWatchedMovies={recentlyWatchedMovies}
       />
     );
   } else {
-    return <div>Page Not Found</div>; // Handle unexpected pageIndex values
+    return <div>Page Not Found</div>; 
   }
 };
 
