@@ -120,7 +120,7 @@ const App = () => {
     return (
       <HeatMapPage
     // goes to end page!
-        onClick={() => setPageIndex(5)})
+        onClick={() => setPageIndex(5)}
         recentlyWatchedMovies={recentlyWatchedMovies}
       />
     );
