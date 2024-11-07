@@ -28,7 +28,7 @@ const TitlePage = ({ usernamesInput, setUsernamesInput, handleFetchData, onClick
   };
 
   return (
-    <div>
+    <div className="main-content">
       <h1>So you're friends who like movies.<br/>Let's see who the real cinephile is.</h1>
       <div className="input-container">
 
@@ -47,7 +47,7 @@ const TitlePage = ({ usernamesInput, setUsernamesInput, handleFetchData, onClick
       {loading && <p className="loading">“Difficult to see. Always in motion is the future.”<br/>–Yoda</p>}
       {fetchedData && (
         <div>
-          <p>Start exploring your data from the previous calendar year, and see just how well you stack up against each other.</p>
+          <p className="intro-message">Start exploring your data. <br></br>See how well you stack up against each other.</p>
           <p>
             <button className="next-page-button" onClick={() => onClick(0)}>Begin</button>
           </p>
@@ -55,7 +55,7 @@ const TitlePage = ({ usernamesInput, setUsernamesInput, handleFetchData, onClick
       )}
       {(buttonPressed && usernamesInput.trim() === '') && <p className="warning">Please enter at least one username.</p>}
        {(buttonPressed && usernames.length < 2) && <p className="warning">You must input more than 1 username.</p>}
-    <footer> This site was built for desktop viewing</footer>
+    {/* <footer> This site was built for desktop viewing</footer> */}
     </div>
   );
 };

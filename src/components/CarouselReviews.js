@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react'
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import '../styles/styles.css';
@@ -8,7 +8,6 @@ const CarouselReviews = ({ data, username }) => {
   const [movieDetails, setMovieDetails] = useState([]);
 
   useEffect(() => {
-    // Shuffle and slice data to get 5 random reviews
     const shuffledData = data.sort(() => 0.5 - Math.random()).slice(0, 5);
 
     const fetchDetails = async () => {
@@ -19,8 +18,9 @@ const CarouselReviews = ({ data, username }) => {
             return { ...movie, posterUrl: movieDetail.posterUrl };
           } catch (error) {
             console.error(`Error fetching details for ${movie.film_title}:`, error);
-            //  if no poster is found, fall back
-            return { ...movie, posterUrl: '' }; d
+
+            return { ...movie, posterUrl: '' };
+
           }
         })
       );
@@ -31,22 +31,36 @@ const CarouselReviews = ({ data, username }) => {
   }, [data]);
 
   return (
-    <div className="carousel-container">
-      <Carousel showThumbs={false} infiniteLoop useKeyboardArrows autoPlay>
+    <div className="carousel-wrapper">
+      <h2 className="carousel-header">{username}'s Movies Watched in {new Date().getFullYear() - 1}</h2>
+      <Carousel 
+        showThumbs={false} 
+        infiniteLoop 
+        useKeyboardArrows 
+        autoPlay 
+        interval={5000} 
+        showStatus={false}
+        className="custom-carousel"
+      >
         {movieDetails.map((entry, index) => (
           <div key={index} className="review-slide">
-            <h3 className='carousel-title'>{entry.film_title} ({entry.release_year})</h3>
+            <h3 className="carousel-title">{entry.film_title} ({entry.release_year})</h3>
+            
             {entry.posterUrl && (
               <img
                 src={entry.posterUrl}
                 alt={`${entry.film_title} Poster`}
-                style={{ width: '200px', height: 'auto' }}
+                className="poster-image"
               />
             )}
-            <p>Logged on&nbsp;<strong>{entry.date_watched}</strong></p>
-            <p><strong>Rating:&nbsp; </strong>{entry.rating} / 5</p>
-            <p><strong>Review:&nbsp; </strong>"{entry.review_text}"</p>
-            <p className='rewatch-text'>{entry.rewatch === "true" ? "Rewatch" : "First Time Watch"}</p>
+
+            <div className="review-content">
+              <p><strong>Date Watched:&nbsp;</strong>{entry.date_watched}</p>
+              <p><strong>Rating:&nbsp;</strong>{entry.rating} / 5</p>
+              <p className="review-text truncate"><strong>Review:&nbsp;</strong>{entry.review_text.length > 100 ? `${entry.review_text.slice(0, 100)}...` : entry.review_text}
+</p>
+              <p className="rewatch-text">{entry.rewatch === "true" ? "Rewatch" : "First Time Watch"}</p>
+            </div>
           </div>
         ))}
       </Carousel>

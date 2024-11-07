@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { getMostRewatchesUser } from '../components/MostRewatches'; // Adjust path as needed
-import { fetchMovieDetailsByName } from '../TMDBquery'; // Adjust path as needed
+import { getMostRewatchesUser } from '../components/MostRewatches';  
+import { fetchMovieDetailsByName } from '../TMDBquery';  
 import '../styles/styles.css';
 
 const MostRewatchesPage = ({ recentlyWatchedMovies, onClick }) => {
@@ -17,7 +17,8 @@ const MostRewatchesPage = ({ recentlyWatchedMovies, onClick }) => {
       if (user && user.title) {
         try {
           const movieDetails = await fetchMovieDetailsByName(user.title);
-          setMostRewatchedMovie(user.title); // Set the most rewatched movie title
+          // Set the most rewatched movie title
+          setMostRewatchedMovie(user.title); 
           setMostRewatchedMovieDetails(movieDetails);
         } catch (error) {
           console.error('Error fetching movie details:', error);
@@ -37,9 +38,9 @@ const MostRewatchesPage = ({ recentlyWatchedMovies, onClick }) => {
   }, [mostRewatchedMovieDetails]);
 
   return (
-    <div>
+    <div className="rewatches-page">
       {mostRewatchesUser && (
-          <h2>{mostRewatchesUser.username} left you all in the dust by rewatching {mostRewatchesUser.rewatchCount} movies</h2>
+          <h2 className="rewatches-title">{mostRewatchesUser.username} left you all in the dust by rewatching {mostRewatchesUser.rewatchCount} movies</h2>
       )}
       {!mostRewatchesUser && <p>Loading...</p>}
       {mostRewatchedMovieDetails && (
@@ -67,7 +68,6 @@ const MostRewatchesPage = ({ recentlyWatchedMovies, onClick }) => {
   );
 };
 
-// FadeIn component remains unchanged from previous implementation
 const FadeIn = ({ children }) => {
   const [isVisible, setIsVisible] = useState(false);
 

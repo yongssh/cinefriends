@@ -1,7 +1,9 @@
 export const getLastYearMovies = (diaryData) => {
-  // make sure diaryData is an array and not empty
+
+  // check diaryData is an array, NOT empty
   if (!Array.isArray(diaryData)) {
       console.error('diaryData is not an array:', diaryData);
+      // return empty array
       return []; 
   }
   
@@ -28,11 +30,13 @@ export const getLastYearMovies = (diaryData) => {
   // sort filtered movies by date_watched in descending order
   const sortedMovies = filteredMovies.sort((a, b) => new Date(b.date_watched) - new Date(a.date_watched));
 
+
   // convert rewatch from string to boolean 
   const convertedmovies = sortedMovies.map(movie => ({
       ...movie,
       rewatch: movie.rewatch === 'true', 
       rating: parseInt(movie.rating) || 'No Rating' 
+
   }));
 
   console.log('Movies with Rewatch and Rating:', convertedmovies);

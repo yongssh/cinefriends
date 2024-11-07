@@ -6,14 +6,17 @@ import CarouselReviews from '../components/CarouselReviews';
 
 const LastYearMoviesPage = ({ recentlyWatchedMovies, onClick }) => {
   return (
-    <div>
-      <h2>Life is in the details. So let's take a look.</h2>
+    <div className="last-year-movie-page">
+      <h2 className="life-in-details">Life is in the details.</h2>
+      <h2>Let's take a look at some of the highlights</h2>
+
+      
       {Object.keys(recentlyWatchedMovies).map(username => {
         const userMovies = getLastYearMovies(recentlyWatchedMovies[username]);
+
         return (
           <div key={username}>
-            <h2>Let's take a look at some of {username}'s highlights</h2>
-            <h3>{username}'s Movies Watched in {new Date().getFullYear() - 1}:</h3>
+            
             <div className="carousel-container">
               <CarouselReviews data={userMovies} username={username} />
             </div>

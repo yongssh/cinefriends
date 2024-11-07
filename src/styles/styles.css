@@ -1,12 +1,43 @@
 
 body {
-    background-color: #14181c;
+    /* background-color: #14181c; */
+    background: linear-gradient(45deg, #14171C, #2C343F, #556678);
+    background-size: 300% 300%;  
+    background-attachment: fixed;
+    height: 100vh;
     color: #FFFFFF;
     font-family: "Roboto Slab", sans-serif;
     display: flex;
     flex-direction: column;
     align-items: center;
+    animation: gradientShift 10s ease infinite; 
+    
+  }
 
+
+ @keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;  
+  }
+
+  50% {
+    background-position: 100% 50%;  
+  }
+
+  100% {
+    background-position: 0% 50%;  
+  }
+}
+
+section, .carousel-wrapper, .rewatches-page, .end-page, .heat-map-page {
+  animation: gradientShift 10s ease infinite;  
+  height: 100%;  
+}
+
+  .main-content{
+    display:flex;
+    justify-content: center;
+    flex-direction: column;
     
   }
   
@@ -41,6 +72,8 @@ body {
   }
   .next-page-button{
     text-align: center; 
+    align-self: center;
+    justify-content: center;
     align-items: center;
     display: inline-block;
     margin-top: 20px;
@@ -50,10 +83,21 @@ body {
     animation: fadeIn 1s ease-in;
     opacity: 1;
   }
-  
+
+  .life-in-details{
+    animation: fadeIn 2s ease-in;
+  }
+
+
+  .intro-message{
+    align-content: center;
+    justify-content: center;
+    text-align: center;
+  }
   button:hover {
     background-color: #007F4B;
   }
+
   
   .movie-list {
     list-style: none;
@@ -94,7 +138,7 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100vh; /* Full height of the viewport */
+    height: 100vh;  
     text-align: center;
   }
   
@@ -109,7 +153,7 @@ body {
     padding: 10px;
     font-size: 16px;
     width: 80%;
-    max-width: 400px; /* Maximum width for the input */
+    max-width: 400px;  
     margin-bottom: 10px;
     font-family: "Roboto Slab", serif;
   }
@@ -117,7 +161,7 @@ body {
     align-items: center;
     justify-content: center;
     text-align: center;
-    margin-bottom: 20px; /* Space between heading and input container */
+    margin-bottom: 20px;  
   }
 
   h2{
@@ -167,6 +211,7 @@ body {
     opacity: 1;
     font-family: "Roboto Slab", serif;
     text-align: center;
+    margin: 10%;
   }
 
   .page-container {
@@ -232,20 +277,11 @@ body {
 .axis-text {
   font-family: "Roboto Slab", serif;
   font-size: 12px;
-  /* Add more styling as needed */
-}
+ }
 
 .end-info{
   font-family: "Roboto Slab", serif;
   font-size: 8px;
-}
-
-.align-barchart{
-  margin-top: 80px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #40bcf4;
 }
 
 .genre-tag-cloud {
@@ -269,7 +305,7 @@ body {
   margin: 0 10px;
   font-size: 16px;
   font-family: 'Roboto Slab', sans-serif;
-  color: #ff8000; /* Set the font color to #ff8000 */
+  color: #ff8000;  
 }
 
 .poster-container {
@@ -278,15 +314,17 @@ body {
 }
 
 .centered-poster {
-  width: 200px; /* Adjust width as needed */
-  transition: opacity 1s ease; /* Example fade-in transition */
-  opacity: 0; /* Start with opacity 0 */
+  width: 200px;  
+  transition: opacity 1s ease;  
+  opacity: 0;  
 }
 
 .centered-poster.loaded {
-  opacity: 1; /* Fade in when loaded */
+  opacity: 1;  
 }
 
+.carousel-wrapper{
+}
 
 
 /* Carousel Styling */
@@ -295,10 +333,10 @@ body {
   justify-content: center;
   align-items: center;
   margin: 0 auto;
-  max-width: 80vw;
-  box-sizing: border-box; /* Ensure padding and border are included in the width and height */
-  padding: 0; /* Remove unnecessary padding */
-  margin-bottom: 30px;
+  width: 80vw;
+  box-sizing: border-box;  
+  animation: fadeIn 3s ease-in;
+  padding:0;
 }
 
 .review-slide {
@@ -306,37 +344,25 @@ body {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: 10px; /* Adjust padding as needed */
+  padding: 10px; 
   box-sizing: border-box;
 }
 
 .carousel-title {
   font-size: 1.5em;
-  margin-bottom: 10px;
 }
 
 .carousel img {
   margin-bottom: 20px;
-  max-width: 100%; /* Ensure images scale down if too large */
+  max-width: 100%;  
   height: auto;
 }
 
-.carousel .control-dots {
-  position: absolute;
-  margin-top: 15px;
-  bottom: 10px; /* position the dots higher or lower */
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  justify-content: center;
-  padding: 0;
-  margin: 0;
-}
 
 .review-poster-container{
-  width: 100px; /* Ensure the poster fits within its container */
-  height: auto; /* Maintain aspect ratio */
-  margin-bottom: 10px; /* Optional: Add margin for spacing */
+  width: 100px;  
+  height: auto;  
+  /* margin-bottom: 10px;   */
   align-content: center;
   justify-content: center;
 }
@@ -360,6 +386,725 @@ footer{
   font-family: 'Roboto Slab', sans-serif;
 }
 
-.carousel-title{
-  color: #ff8000;
+
+
+
+
+body {
+  background-color: #14181c;
+  color: #FFFFFF;
+  font-family: "Roboto Slab", sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  
 }
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.input-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+input[type="text"] {
+  width: calc(100% - 120px);
+  padding: 10px;
+
+  border: 1px solid #CCCCCC;
+  border-radius: 4px;
+}
+
+button {
+  background-color: #00A85D;
+  color: #f7f7f7;
+  border: none;
+  cursor: pointer;
+  padding: 0.35em 0.7em;
+  font-family: 'Roboto Slab', serif;
+  border-radius: 8px;
+}
+.next-page-button{
+  text-align: center; 
+  align-items: center;
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 16px;
+  align-self: center;
+  justify-content: center;
+  cursor: pointer;
+  animation: fadeIn 1s ease-in;
+  opacity: 1;
+}
+
+button:hover {
+  background-color: #007F4B;
+}
+
+
+.movie-list {
+  list-style: none;
+  padding: 0;
+}
+
+.movie-list li {
+  margin-bottom: 10px;
+  padding: 10px;
+  background-color: #2A2A2A;
+  border-radius: 4px;
+}
+
+h2 {
+  color: #00A85D;
+  margin-top: 40px;
+}
+
+h1{
+  font-family: 'Roboto Slab', serif;
+  font-weight: 600; 
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  padding-top: 50px;
+
+}
+ p{
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  font-family: "Roboto Slab", serif;
+}
+
+.title-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+input {
+  padding: 10px;
+  font-size: 16px;
+  width: 80%;
+  max-width: 400px;  
+  font-family: "Roboto Slab", serif;
+}
+.competitive-intro{
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-bottom: 20px; 
+}
+
+h2{
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-family: "Roboto Slab", serif;
+}
+
+h3{
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-family: "Roboto Slab", serif;
+}
+li{
+  font-family: "Roboto Slab", serif;
+}
+
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in-out {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.loading {
+  font-size: 1.2em;
+  color: #888;
+  margin-top: 1em;
+  animation:  fade-in-out 5s infinite;
+  opacity: 1;
+  font-family: "Roboto Slab", serif;
+  text-align: center;
+}
+
+.page-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-top: 20px;
+  font-family: "Roboto Slab", serif;
+  
+}
+
+.fade-in-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+  font-family: "Roboto Slab", serif;
+  margin-top: 40px;
+}
+
+.fade-in-review,
+.fade-in-header,
+.fade-in-review-count {
+  opacity: 0;
+  animation: fadeIn 0.5s forwards;
+  margin: 10px 0;
+  font-family: "Roboto Slab", serif;
+}
+
+
+
+@keyframes fadeInReview {
+  to {
+    opacity: 1;
+  }
+}
+
+button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+/* FOR HEAT MAP */
+.heat-map-container {
+width: 95vw;
+
+}
+
+.heat-map .day-label,
+.heat-map .month-label {
+fill: #666;
+font-size: 15px;
+text-anchor: middle;
+color: #fff;
+font-family: "Roboto Slab", serif;
+}
+
+
+
+.axis-text {
+font-family: "Roboto Slab", serif;
+font-size: 12px;
+ }
+
+.end-info{
+font-family: "Roboto Slab", serif;
+font-size: 8px;
+}
+
+.align-barchart{
+margin-top: 80px;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+color: #40bcf4;
+width: 100vw;
+overflow-x: hidden; /* do i want to scroll?? */
+}
+.bar-chart-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%; 
+}
+.genre-tag-cloud {
+width: 100%;
+height: 300px;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+
+.countup-container {
+display: flex;
+justify-content: center;
+flex-wrap: wrap;
+margin-bottom: 20px;
+margin-top: 40px;
+}
+
+.countup-item {
+margin: 0 10px;
+font-size: 16px;
+font-family: 'Roboto Slab', sans-serif;
+color: #ff8000; 
+.poster-container {
+display: flex;
+justify-content: center;
+}
+
+.centered-poster {
+width: 200px;  
+transition: opacity 1s ease;  
+opacity: 0;  
+}
+
+.centered-poster.loaded {
+opacity: 1;  
+}
+
+
+.review-slide {
+display: flex;
+height:100%;
+flex-direction: column;
+align-items: center;
+text-align: center;
+padding: 10px; 
+box-sizing: border-box;
+position: relative;   
+padding-bottom: 40px;  
+}
+
+.carousel-root{
+  width:90vw;
+  height:90vh;
+}
+.carousel-title {
+font-size: 1.5em;
+margin-bottom: 10px;
+}
+
+.carousel img {
+margin-bottom: 20px;
+max-width: 100%;  
+height: auto;
+}
+
+.carousel .control-dots {
+position: absolute;
+
+  bottom: 30px;  
+  left: 50%;  
+  transform: translateX(-50%);   
+  display: flex;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+  z-index: 2;  
+}s
+.review-poster-container{
+width: 100px;  
+height: auto;  
+margin-bottom: 10px;  
+align-content: center;
+justify-content: center;
+}
+
+.rewatches-page{
+  height:100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.rewatches-title{
+  margin-top: 10%;
+}
+.rewatch-text {
+color: #ff8000;
+}
+
+.heat-map-heading{
+color: #ff8000;
+}
+
+footer{
+margin-top: auto;
+
+font-size: 10px;
+text-align: center;
+width: 100%;
+position: sticky;
+bottom: 0;
+font-family: 'Roboto Slab', sans-serif;
+}
+/*****/
+.animated-background {
+  position: relative;
+  overflow: auto;
+  height:100vh;
+  width: 100vw;
+  background: linear-gradient(120deg, #1e3c72, #111f36, #31a4e9);
+  background-size: 400% 400%;
+  animation: gradientAnimation 10s ease infinite;
+  display: flex;
+  flex-direction: column;
+}
+
+@keyframes gradientAnimation {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/*****/
+
+@media (max-width: 768px) { 
+.align-barchart {
+  margin-top: 20px;  
+
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  
+
+}
+.last-year-movie-page{
+  overflow-y: auto;
+}
+.intro-message{
+  text-align: center;
+  align-content: center;
+  justify-content: center;
+  padding: 10%;
+}
+}
+
+.movies-watched-page {
+  text-align: center;
+  align-items: center;
+  font-family: 'Roboto', sans-serif;
+  color: #333;
+}
+
+.title {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  /* color: #40bcf4; */
+  color: #fafafa;
+  align-content: center;
+  justify-content: center;
+  padding-top: 2rem;
+  padding-left:0.5rem;
+  padding-right: 0.5rem;
+}
+
+
+.countup-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  align-content: center;
+  /* padding-left:0.5rem; */
+  padding-right: 0.5rem;
+}
+
+.countup-item {
+  background: #f4f4f4;
+  padding: 8px 12px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.countup-number {
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: #ff8000;
+  text-shadow: 1px 1px #ccc;
+}
+
+.chart-container {
+  width: 90vw;
+  padding: 1rem;
+  border-radius: 10px;
+  align-self: center;
+  justify-content: center;
+  border: 2px solid #00B021;
+  background: linear-gradient(135deg, #181c30, #1d2c34);
+}
+
+.next-page-button {
+  padding: 10px 20px;
+  background: #00B021;
+  border: none;
+  align-self: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.next-page-button:hover {
+  background: #00B022;
+}
+.carousel-container {
+  
+  width: 80vw;
+  height: 100%;
+  margin: auto;
+  border-radius: 15px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.carousel-header {
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #33a2d2;
+}
+.carousel-root.custom-carousel{
+  padding:0;
+  margin:0;
+  height:90%;
+  width: 80vw;
+}
+.carousel-wrapper{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.button.control-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);  
+  z-index: 2;  
+  width: 30px;
+  height: 30px;
+  font-size: 25px; 
+  color: #fff; 
+  background: rgba(0, 0, 0, 0.5);  
+  border-radius: 50%; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/** FIX ARROWS **/
+.carousel .control-arrow.control-prev {
+  left: 10px;  
+}
+
+
+ .carousel .control-arrow.control-next {
+  right: 10px;  
+}
+.custom-carousel .slide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.carousel.carousel-slider{
+  height: 100%;
+  width:50%;
+
+}
+
+.review-slide {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #14171C;
+  border-radius: 12px;
+  padding: 1.2rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 300px;
+  margin: auto;
+  text-align: center;
+}
+
+.carousel-title {
+  font-size: 1.6rem;
+  color: #fafafa;
+  margin-bottom: 0.5rem;
+}
+
+.poster-image {
+  width: 90%;
+  height: 30%;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  transition: transform 0.3s ease;
+}
+
+.poster-image:hover {
+  transform: scale(1.05);
+}
+
+.review-content {
+  font-size: 1rem;
+  color: #fafafa;
+  margin-top: 0.5rem;
+}
+
+.review-text {
+  font-style: italic;
+  color: #fafafa;
+}
+
+.rewatch-text {
+  font-size: 0.9rem;
+  color: #007bff;
+  margin-top: 0.5rem;
+}
+
+.heat-map-page{
+  width: 90%
+}
+
+.end-page{
+  width:100%;
+  height:100%;
+  text-align: center;
+  justify-content: center;
+  align-content: center;
+}
+.end-text{
+  font-size: 2rem;
+  text-align: center;
+  justify-content: center;
+  align-content: center;
+  padding:5%;
+  margin-bottom: 20px;
+}
+@media (max-width: 768px) {
+
+
+.carousel-wrapper{
+  width: 80vw;
+}
+  .carousel-title {
+    font-size: 1.4rem;
+  }
+  
+  .poster-image {
+    width: 120px;
+  }
+  
+  .review-content {
+    font-size: 0.9rem;
+  }
+
+  .chart-container{  
+    width: 80vw;
+  }
+
+
+
+
+ .carousel .control-next {
+  right: -10px;
+}
+
+.carousel .control-prev {
+  left: -10px;
+}
+
+ .review-text,
+.rewatch-text,
+.carousel-title {
+  font-size: 0.9em;
+}
+
+.heat-map-page{
+  width: 90vw;
+}
+}
+
+.heat-map-page {
+  padding: 20px;  
+}
+
+.heat-map-heading {
+  margin-top: 20px;
+}
+
+.heat-map-container {
+  max-width: 100%;  
+  width: 100%;
+  overflow-x: auto;  
+  margin-bottom: 20px;  
+}
+
+.heat-map-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  overflow: hidden;  
+}
+
+@media screen and (max-width: 768px) {
+  .heat-map-container {
+    padding: 0 10px;  
+  }
+
+  .heat-map-wrapper {
+    width: 100%;
+    overflow-x: auto;  
+  }
+
+  .end-text{
+    
+    text-align: center;
+    justify-content: center;
+    align-content: center;
+  }
+}
+
+.next-page-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: #00B021;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+
+.next-page-button:hover {
+  background-color: #05931f;
+}
+

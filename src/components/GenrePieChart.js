@@ -5,6 +5,7 @@ const GenrePieChart = ({ movies }) => {
   const [genreData, setGenreData] = useState({ labels: [], data: [] });
 
   useEffect(() => {
+
     // exit  if movies is undefined or empty
     if (!movies || movies.length === 0) return; 
 
