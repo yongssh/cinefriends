@@ -39,6 +39,7 @@ export const fetchMovieDetailsByName = async (movieName, releaseYear = null) => 
     const genres = movieDetails.genres.map(genre => genre.name).join(', ');
 
     const posterUrl = `${IMAGE_BASE_URL}${movieDetails.poster_path}`;
+    const runtime = movieDetails.runtime; 
     // print poster url?? to check ??
     // console.log('Poster URL:', posterUrl); 
 
@@ -49,6 +50,7 @@ export const fetchMovieDetailsByName = async (movieName, releaseYear = null) => 
       languages,
       genres,
       posterUrl,
+      runtime
     };
   } catch (error) {
     console.error('Error fetching movie details:', error);

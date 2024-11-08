@@ -1,6 +1,8 @@
-
+/* colors: 
+Green: #00A85D */
 body {
     /* background-color: #14181c; */
+    /* gradient colors */
     background: linear-gradient(45deg, #14171C, #2C343F, #556678);
     background-size: 300% 300%;  
     background-attachment: fixed;
@@ -14,8 +16,8 @@ body {
     
   }
 
-
- @keyframes gradientShift {
+/* animatin ggradient colors */
+@keyframes gradientShift {
   0% {
     background-position: 0% 50%;  
   }
@@ -38,6 +40,7 @@ section, .carousel-wrapper, .rewatches-page, .end-page, .heat-map-page {
     display:flex;
     justify-content: center;
     flex-direction: column;
+    padding-top:10vh;
     
   }
   
@@ -74,9 +77,8 @@ section, .carousel-wrapper, .rewatches-page, .end-page, .heat-map-page {
     text-align: center; 
     align-self: center;
     justify-content: center;
-    align-items: center;
     display: inline-block;
-    margin-top: 20px;
+    margin-bottom: 5rem;
     padding: 10px 20px;
     font-size: 16px;
     cursor: pointer;
@@ -292,22 +294,6 @@ section, .carousel-wrapper, .rewatches-page, .end-page, .heat-map-page {
   align-items: center;
 }
 
-
-.countup-container {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin-bottom: 20px;
-  margin-top: 40px;
-}
-
-.countup-item {
-  margin: 0 10px;
-  font-size: 16px;
-  font-family: 'Roboto Slab', sans-serif;
-  color: #ff8000;  
-}
-
 .poster-container {
   display: flex;
   justify-content: center;
@@ -322,62 +308,64 @@ section, .carousel-wrapper, .rewatches-page, .end-page, .heat-map-page {
 .centered-poster.loaded {
   opacity: 1;  
 }
+.last-year-movie-page{
+  display:flex;
+  flex-direction: column;
+  overflow-y: auto;
+  width: 100%;
+  padding-top:10vh;
 
-.carousel-wrapper{
+
 }
 
 
-/* Carousel Styling */
-.carousel-container {
+
+
+.user-movies {
+  margin: 1rem;
+  text-align: center;
   display: flex;
   justify-content: center;
-  align-items: center;
-  margin: 0 auto;
-  width: 80vw;
-  box-sizing: border-box;  
-  animation: fadeIn 3s ease-in;
-  padding:0;
-}
-
-.review-slide {
-  display: flex;
-  flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: 10px; 
-  box-sizing: border-box;
-}
-
-.carousel-title {
-  font-size: 1.5em;
-}
-
-.carousel img {
-  margin-bottom: 20px;
-  max-width: 100%;  
-  height: auto;
+  flex-wrap: wrap;
+  padding: 0.2rem;
+  padding-bottom: 2rem;
 }
 
 
-.review-poster-container{
-  width: 100px;  
-  height: auto;  
-  /* margin-bottom: 10px;   */
-  align-content: center;
+.movie-cards{
+  display: flex;
+  flex-wrap: wrap;
   justify-content: center;
+  align-items:center;
+  padding-top:2rem;
+  gap: 1rem;
+  text-align: center;
 }
 
-.rewatch-text {
-  color: #ff8000;
+.movie-card {
+  width: 15rem;
+  padding: 1rem;
+  background: #fafafa;
+  border-radius: 5px;
+  color: #181c30;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  height: 40rem;
+
+  text-align: center;
 }
 
-.heat-map-heading{
-  color: #ff8000;
+.poster-image-small {
+  width: 100%;
+  height: auto;
+  align-content: center;
 }
+
 
 footer{
   margin-top: auto;
-
   font-size: 10px;
   text-align: center;
   width: 100%;
@@ -387,6 +375,51 @@ footer{
 }
 
 
+.user-movies {
+  margin: 20px;
+  text-align: center;
+}
+
+
+.movie-card-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  text-align: center;
+
+}
+.poster-image {
+  width: 100%;
+  height: auto;
+  max-height: 225px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.movie-title {
+  font-size: 1rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+.movie-info{
+  padding:0px;
+  gap:0px;
+  margin: 0px;
+  width: 100%;
+  text-align: center;
+
+
+}
+.rating{
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+}
 
 
 
@@ -430,19 +463,7 @@ button {
   font-family: 'Roboto Slab', serif;
   border-radius: 8px;
 }
-.next-page-button{
-  text-align: center; 
-  align-items: center;
-  display: inline-block;
-  margin-top: 20px;
-  padding: 10px 20px;
-  font-size: 16px;
-  align-self: center;
-  justify-content: center;
-  cursor: pointer;
-  animation: fadeIn 1s ease-in;
-  opacity: 1;
-}
+
 
 button:hover {
   background-color: #007F4B;
@@ -633,7 +654,7 @@ font-size: 8px;
 }
 
 .align-barchart{
-margin-top: 80px;
+margin-top: 1rem;
 display: flex;
 flex-direction: column;
 align-items: center;
@@ -657,19 +678,6 @@ align-items: center;
 }
 
 
-.countup-container {
-display: flex;
-justify-content: center;
-flex-wrap: wrap;
-margin-bottom: 20px;
-margin-top: 40px;
-}
-
-.countup-item {
-margin: 0 10px;
-font-size: 16px;
-font-family: 'Roboto Slab', sans-serif;
-color: #ff8000; 
 .poster-container {
 display: flex;
 justify-content: center;
@@ -697,6 +705,8 @@ box-sizing: border-box;
 position: relative;   
 padding-bottom: 40px;  
 }
+
+
 
 .carousel-root{
   width:90vw;
@@ -740,13 +750,22 @@ justify-content: center;
   align-items: center;
   justify-content: center;
   text-align: center;
+  width: 90vw;
+}
+
+.most-reviews-page{
+  height:100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 90vw;
+
 }
 
 .rewatches-title{
   margin-top: 10%;
-}
-.rewatch-text {
-color: #ff8000;
 }
 
 .heat-map-heading{
@@ -764,25 +783,8 @@ bottom: 0;
 font-family: 'Roboto Slab', sans-serif;
 }
 /*****/
-.animated-background {
-  position: relative;
-  overflow: auto;
-  height:100vh;
-  width: 100vw;
-  background: linear-gradient(120deg, #1e3c72, #111f36, #31a4e9);
-  background-size: 400% 400%;
-  animation: gradientAnimation 10s ease infinite;
-  display: flex;
-  flex-direction: column;
-}
 
-@keyframes gradientAnimation {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-/*****/
+/**MOBILE **/
 
 @media (max-width: 768px) { 
 .align-barchart {
@@ -796,6 +798,8 @@ font-family: 'Roboto Slab', sans-serif;
 }
 .last-year-movie-page{
   overflow-y: auto;
+  width: 100%;
+
 }
 .intro-message{
   text-align: center;
@@ -816,7 +820,7 @@ font-family: 'Roboto Slab', sans-serif;
   font-size: 2rem;
   margin-bottom: 1rem;
   /* color: #40bcf4; */
-  color: #fafafa;
+  color: #00A85D;
   align-content: center;
   justify-content: center;
   padding-top: 2rem;
@@ -831,8 +835,28 @@ font-family: 'Roboto Slab', sans-serif;
   justify-content: center;
   gap: 10px;
   align-content: center;
-  /* padding-left:0.5rem; */
+  margin-bottom: 0.5rem;  
+  margin-top: 0.5rem; 
   padding-right: 0.5rem;
+
+  
+}
+.animated-background {
+  position: relative;
+  overflow: auto;
+  height:100vh;
+  width: 100vw;
+  background: linear-gradient(120deg, #1e3c72, #111f36, #31a4e9);
+  background-size: 400% 400%;
+  animation: gradientAnimation 10s ease infinite;
+  display: flex;
+  flex-direction: column;
+}
+
+@keyframes gradientAnimation {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 .countup-item {
@@ -858,32 +882,22 @@ font-family: 'Roboto Slab', sans-serif;
   border: 2px solid #00B021;
   background: linear-gradient(135deg, #181c30, #1d2c34);
 }
-
-.next-page-button {
-  padding: 10px 20px;
-  background: #00B021;
-  border: none;
-  align-self: center;
-  justify-content: center;
-  color: #fff;
-  font-size: 1rem;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-.next-page-button:hover {
-  background: #00B022;
-}
+/* Carousel Styling */
 .carousel-container {
-  
-  width: 80vw;
-  height: 100%;
-  margin: auto;
-  border-radius: 15px;
-  padding: 1.5rem;
   display: flex;
-  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  width: 100vw;
+  box-sizing: border-box;  
+  padding:0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  flex-wrap: wrap;
+  padding: 0.2rem;
+  padding-bottom: 2rem;
 }
 
 .carousel-header {
@@ -891,12 +905,16 @@ font-family: 'Roboto Slab', sans-serif;
   font-size: 1.8rem;
   font-weight: bold;
   color: #33a2d2;
+  animation: fadeIn 3s ease-in;
+
 }
 .carousel-root.custom-carousel{
   padding:0;
   margin:0;
   height:90%;
-  width: 80vw;
+  width: 80vw; 
+   animation: fadeIn 5s ease-in;
+
 }
 .carousel-wrapper{
   display: flex;
@@ -933,6 +951,7 @@ font-family: 'Roboto Slab', sans-serif;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  width: 50%;
 }
 
 .carousel.carousel-slider{
@@ -949,7 +968,8 @@ font-family: 'Roboto Slab', sans-serif;
   border-radius: 12px;
   padding: 1.2rem;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  max-width: 300px;
+  max-width: 30rem;
+  max-height:90vh;
   margin: auto;
   text-align: center;
 }
@@ -960,17 +980,6 @@ font-family: 'Roboto Slab', sans-serif;
   margin-bottom: 0.5rem;
 }
 
-.poster-image {
-  width: 90%;
-  height: 30%;
-  border-radius: 8px;
-  margin-bottom: 1rem;
-  transition: transform 0.3s ease;
-}
-
-.poster-image:hover {
-  transform: scale(1.05);
-}
 
 .review-content {
   font-size: 1rem;
@@ -980,33 +989,37 @@ font-family: 'Roboto Slab', sans-serif;
 
 .review-text {
   font-style: italic;
-  color: #fafafa;
+  color: #181c30;
+  text-align: center;
+
 }
 
-.rewatch-text {
-  font-size: 0.9rem;
-  color: #007bff;
-  margin-top: 0.5rem;
-}
 
 .heat-map-page{
   width: 90%
 }
 
 .end-page{
-  width:100%;
-  height:100%;
-  text-align: center;
+  height:100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
-  align-content: center;
+  text-align: center;
+  width: 90vw;
 }
 .end-text{
-  font-size: 2rem;
+ 
+}
+.end-text{
+  font-size: 1.5rem;
   text-align: center;
   justify-content: center;
   align-content: center;
-  padding:5%;
-  margin-bottom: 20px;
+  margin-top: 3rem;
+}
+.end-info{
+  font-size: 1rem;
 }
 @media (max-width: 768px) {
 
@@ -1075,6 +1088,11 @@ font-family: 'Roboto Slab', sans-serif;
   overflow: hidden;  
 }
 
+.slide{
+  width: 80%;
+  
+}
+
 @media screen and (max-width: 768px) {
   .heat-map-container {
     padding: 0 10px;  
@@ -1093,19 +1111,73 @@ font-family: 'Roboto Slab', sans-serif;
   }
 }
 
-.next-page-button {
-  margin-top: 20px;
-  padding: 10px 20px;
-  font-size: 16px;
-  cursor: pointer;
-  background-color: #00B021;
-  color: white;
-  border: none;
-  border-radius: 5px;
+
+.carousel-wrapper {
+  max-width: 90%;
+  height: 65vw;;
+  margin: auto;
 }
 
-.next-page-button:hover {
-  background-color: #05931f;
+.custom-carousel .carousel .slide {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
+.poster-image {
+  width: 20%;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.review-content {
+  max-width: 300px; /* Ensures content is not too wide */
+}
+
+
+.rewatch-text {
+  font-style: italic;
+  font-size: 0.75rem;
+  color: #555;
+  position: relative;
+  width: 100%; /* Ensure it spans the entire width of the card */
+  text-align: center; /* Center the text */
+}
+
+@media (max-width: 768px) {
+  .carousel-wrapper {
+    max-width: 100%;
+    padding: 0;
+  }
+
+  .poster-image {
+    width: 120px; /* Smaller image for mobile */
+  }
+
+  .review-content {
+    max-width: 250px;
+  }
+
+  .carousel-header {
+    font-size: 1.2em; /* Slightly smaller font on mobile */
+  }
+
+  .movie-cards {
+    grid-template-columns: repeat(2, 1fr); /* 2 cards per row on mobile */
+  }
+
+  .movie-card {
+    max-width: 100%; /* Cards should take full width on mobile */
+    height: 27rem; /* Let height adjust based on content */
+  }
+
+  .poster-image-small {
+    max-width: 120px; /* Reduce poster size on mobile */
+  }
+
+  .movie-info {
+    font-size: 0.85em; /* Slightly smaller text for mobile */
+  }
 }

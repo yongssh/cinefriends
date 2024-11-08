@@ -37,7 +37,7 @@ const MostReviewsPage = ({ recentlyWatchedMovies, onClick }) => {
   }, [recentlyWatchedMovies]);
 
   return (
-    <div className="page-container">
+    <div className="most-reviews-page">
       <div className="fade-in-container">
         {shuffledReviews.map((review, index) => (
           <div key={index} className="fade-in-review" style={{ animationDelay: `${index * 2}s` }}>
