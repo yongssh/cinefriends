@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import html2canvas from "html2canvas";
+import * as htmlToImage from "html-to-image";
 import "../styles/styles.css";
 import { fetchMovieDetailsByName } from "../TMDBquery";
 
@@ -7,7 +8,6 @@ const CarouselReviews = ({ data, username }) => {
   const [movieDetails, setMovieDetails] = useState([]);
   const exportRef = useRef(null);
 
-  // ✅ Date formatter
   const formatDate = (dateString) => {
     const date = new Date(dateString);
     return date.toLocaleDateString("en-US", {
@@ -16,7 +16,6 @@ const CarouselReviews = ({ data, username }) => {
     });
   };
 
-  // ✅ Stats from ALL movies (not just top 5!)
   const totalMoviesWatched = data?.length || 0;
 
   const averageRating =
@@ -30,7 +29,6 @@ const CarouselReviews = ({ data, username }) => {
   useEffect(() => {
     if (!data || data.length === 0) return;
 
-    // sort best rated / longest review and take top 5
     const sortedData = [...data]
       .map((movie) => ({
         ...movie,
@@ -65,19 +63,23 @@ const CarouselReviews = ({ data, username }) => {
     fetchDetails();
   }, [data]);
 
-  // ✅ Export PNG
-  const exportAsPNG = () => {
-    html2canvas(exportRef.current, {
-      backgroundColor: "#101010",
-      scale: 2,
-      useCORS: true,
-    }).then((canvas) => {
-      const link = document.createElement("a");
-      link.download = `${username}-top-movies.png`;
-      link.href = canvas.toDataURL("image/png");
-      link.click();
-    });
-  };
+const exportAsPNG = () => {
+  if (!exportRef.current) return;
+
+  htmlToImage.toPng(exportRef.current, {
+    cacheBust: true,           
+    backgroundColor: "#101010", 
+  })
+  .then((dataUrl) => {
+    const link = document.createElement("a");
+    link.download = `${username}-top-movies.png`;
+    link.href = dataUrl;
+    link.click();
+  })
+  .catch((err) => {
+    console.error("PNG export failed", err);
+  });
+};
 
   return (
     <div className="user-movies">
@@ -103,7 +105,7 @@ const CarouselReviews = ({ data, username }) => {
             <h3 className="movie-title">{entry.film_title}</h3>
 
             {entry.posterUrl && (
-              <img src={entry.posterUrl} alt="poster" className="poster-image-small" />
+              <img src={entry.posterUrl} alt="poster" className="poster-image-small"  referrerPolicy="no-referrer"/>
             )}
 
             <div className="date-stars-row">

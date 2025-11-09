@@ -12,7 +12,7 @@ const TitlePage = ({ usernamesInput, setUsernamesInput, handleFetchData, onClick
 
   const handleButtonClick = () => {
     if (usernamesInput.trim() === '' || usernames.length < 2) {
-      setButtonPressed(true); // Set button pressed state
+      setButtonPressed(true); 
       return;
     }
 

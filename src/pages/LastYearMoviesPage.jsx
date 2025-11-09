@@ -32,9 +32,8 @@ const LastYearMoviesPage = ({ recentlyWatchedMovies, onClick }) => {
   };
 
   return (
-    <div className="movie-init-page">
+    <div className="movie-png-page">
 
-      {/* Fade-in Intro */}
       <h1 className="fade-in title-main">Life is in the details.</h1>
       <h2 className="fade-in-delay subtitle">Let's take a look at some of the highlights.</h2>
 
@@ -48,11 +47,15 @@ const userMovies = getLastYearMovies(recentlyWatchedMovies[username]);
             <div key={username} className="user-column">
               <CarouselReviews data={userMovies} username={username} />
             </div>
+            
           );
         })}
+        
       </div>
-    <button onClick={() => onClick(2)}>Next</button>
+              <button className="next-page-button" onClick={() => onClick(2)}>Next</button>
+
     </div>
+    
     
   );
 };

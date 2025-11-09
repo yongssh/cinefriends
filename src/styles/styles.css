@@ -444,7 +444,13 @@ section, .carousel-wrapper, .rewatches-page, .end-page, .heat-map-page {
   color: #ffc500;
 }
 
-
+.movie-png-page{
+   display: flex;
+  flex-direction: column;
+  align-items: center; 
+  justify-content: center;
+  width: 100%;
+}
 footer{
   margin-top: auto;
   font-size: 10px;
