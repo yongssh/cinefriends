@@ -15,7 +15,6 @@ const defaultReviews = [
   '"A shoo-in for awards season."'
 ];
 
-// Function to shuffle the reviews array
 const shuffleReviews = (reviews) => {
   for (let i = reviews.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -33,25 +32,40 @@ const MostReviewsPage = ({ recentlyWatchedMovies, onClick }) => {
     const { mostReviewsUser, maxReviewsCount } = getMostReviewsUser(recentlyWatchedMovies);
     setMostReviewsUser(mostReviewsUser);
     setMaxReviewsCount(maxReviewsCount);
-    setShuffledReviews(shuffleReviews([...defaultReviews])); // Shuffle the reviews on component mount
+    setShuffledReviews(shuffleReviews([...defaultReviews]));
   }, [recentlyWatchedMovies]);
 
   return (
     <div className="most-reviews-page">
       <div className="fade-in-container">
         {shuffledReviews.map((review, index) => (
-          <div key={index} className="fade-in-review" style={{ animationDelay: `${index * 2}s` }}>
+          <div
+            key={index}
+            className="fade-in-review"
+            style={{ animationDelay: `${index * 2}s` }}
+          >
             {review}
           </div>
         ))}
       </div>
-      <h2 className="fade-in-header" style={{ animationDelay: `${shuffledReviews.length * 2}s` }}>
+
+      <h2
+        className="fade-in-header"
+        style={{ animationDelay: `${shuffledReviews.length * 2}s` }}
+      >
         {mostReviewsUser ? `But the real opinions belong to ${mostReviewsUser}` : 'Loading...'}
       </h2>
-      <p className="fade-in-review-count" style={{ animationDelay: `${(shuffledReviews.length + 1) * 2}s` }}>
+
+      <p
+        className="fade-in-review-count"
+        style={{ animationDelay: `${(shuffledReviews.length + 1) * 2}s` }}
+      >
         {mostReviewsUser ? `They wrote ${maxReviewsCount} reviews last year.` : ''}
       </p>
-      <button onClick={() => onClick(4)}>Next</button>
+
+      <button className="next-page-button" onClick={() => onClick(4)}>
+        Next
+      </button>
     </div>
   );
 };

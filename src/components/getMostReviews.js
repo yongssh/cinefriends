@@ -13,7 +13,7 @@ export const getMostReviewsUser = (userData) => {
     // count reviews for the current user
     let reviewsCount = 0;
     for (const movie of lastYearMovies) {
-      if (movie.review_text && movie.review_text.trim().length > 0) {
+      if (movie.review && movie.review.trim().length > 0) {
         reviewsCount++;
       }
     }
